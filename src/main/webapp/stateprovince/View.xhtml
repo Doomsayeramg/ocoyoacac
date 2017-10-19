@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="StateprovinceViewForm"
+                       renderedListener="#{stateprovinceController.selected != null}"
+                       widgetVar="StateprovinceViewDialog">
+
+
+            <h:outputText value="#{messages.CreateStateprovinceLabel_stateProvinceID}"/>
+            <h:outputText value="#{stateprovinceController.selected.stateProvinceID}"/>
+
+            <h:outputText value="#{messages.CreateStateprovinceLabel_stateProvinceCode}"/>
+            <h:outputText value="#{stateprovinceController.selected.stateProvinceCode}"/>
+
+            <h:outputText value="#{messages.CreateStateprovinceLabel_isOnlyStateProvinceFlag}"/>
+            <h:selectBooleanCheckbox id="isOnlyStateProvinceFlag" value="#{stateprovinceController.selected.isOnlyStateProvinceFlag}" required="true" requiredMessage="#{messages.EditStateprovinceRequiredMessage_isOnlyStateProvinceFlag}" disabled="true"/>
+
+            <h:outputText value="#{messages.CreateStateprovinceLabel_name}"/>
+            <h:outputText value="#{stateprovinceController.selected.name}"/>
+
+            <h:outputText value="#{messages.CreateStateprovinceLabel_rowguid}"/>
+            <h:outputText value="#{stateprovinceController.selected.rowguid}"/>
+
+            <h:outputText value="#{messages.CreateStateprovinceLabel_modifiedDate}"/>
+            <h:outputText value="#{stateprovinceController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateStateprovinceLabel_territoryID}"/>
+            <h:outputText value="#{stateprovinceController.selected.territoryID.name}"/>
+
+            <h:outputText value="#{messages.CreateStateprovinceLabel_countryRegionCode}"/>
+            <h:outputText value="#{stateprovinceController.selected.countryRegionCode.name}"/>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

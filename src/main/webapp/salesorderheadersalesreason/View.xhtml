@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="SalesorderheadersalesreasonViewForm"
+                       renderedListener="#{salesorderheadersalesreasonController.selected != null}"
+                       widgetVar="SalesorderheadersalesreasonViewDialog">
+
+
+            <h:outputText value="#{messages.CreateSalesorderheadersalesreasonLabel_salesorderheadersalesreasonPK_salesOrderID}"/>
+            <h:outputText value="#{salesorderheadersalesreasonController.selected.salesorderheadersalesreasonPK.salesOrderID}"/>
+
+            <h:outputText value="#{messages.CreateSalesorderheadersalesreasonLabel_salesorderheadersalesreasonPK_salesReasonID}"/>
+            <h:outputText value="#{salesorderheadersalesreasonController.selected.salesorderheadersalesreasonPK.salesReasonID}"/>
+
+            <h:outputText value="#{messages.CreateSalesorderheadersalesreasonLabel_modifiedDate}"/>
+            <h:outputText value="#{salesorderheadersalesreasonController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateSalesorderheadersalesreasonLabel_salesreason}"/>
+            <h:outputText value="#{salesorderheadersalesreasonController.selected.salesreason.name}"/>
+
+            <h:outputText value="#{messages.CreateSalesorderheadersalesreasonLabel_salesorderheader}"/>
+            <h:outputText value="#{salesorderheadersalesreasonController.selected.salesorderheader.salesOrderID}"/>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

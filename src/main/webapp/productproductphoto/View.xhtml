@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="ProductproductphotoViewForm"
+                       renderedListener="#{productproductphotoController.selected != null}"
+                       widgetVar="ProductproductphotoViewDialog">
+
+
+            <h:outputText value="#{messages.CreateProductproductphotoLabel_productproductphotoPK_productID}"/>
+            <h:outputText value="#{productproductphotoController.selected.productproductphotoPK.productID}"/>
+
+            <h:outputText value="#{messages.CreateProductproductphotoLabel_productproductphotoPK_productPhotoID}"/>
+            <h:outputText value="#{productproductphotoController.selected.productproductphotoPK.productPhotoID}"/>
+
+            <h:outputText value="#{messages.CreateProductproductphotoLabel_primary}"/>
+            <h:selectBooleanCheckbox id="primary" value="#{productproductphotoController.selected.primary}" required="true" requiredMessage="#{messages.EditProductproductphotoRequiredMessage_primary}" disabled="true"/>
+
+            <h:outputText value="#{messages.CreateProductproductphotoLabel_modifiedDate}"/>
+            <h:outputText value="#{productproductphotoController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateProductproductphotoLabel_product}"/>
+            <h:outputText value="#{productproductphotoController.selected.product.name}"/>
+
+            <h:outputText value="#{messages.CreateProductproductphotoLabel_productphoto}"/>
+            <h:outputText value="#{productproductphotoController.selected.productphoto.thumbnailPhotoFileName}"/>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="SalesterritoryhistoryViewForm"
+                       renderedListener="#{salesterritoryhistoryController.selected != null}"
+                       widgetVar="SalesterritoryhistoryViewDialog">
+
+
+            <h:outputText value="#{messages.CreateSalesterritoryhistoryLabel_salesterritoryhistoryPK_businessEntityID}"/>
+            <h:outputText value="#{salesterritoryhistoryController.selected.salesterritoryhistoryPK.businessEntityID}"/>
+
+            <h:outputText value="#{messages.CreateSalesterritoryhistoryLabel_salesterritoryhistoryPK_territoryID}"/>
+            <h:outputText value="#{salesterritoryhistoryController.selected.salesterritoryhistoryPK.territoryID}"/>
+
+            <h:outputText value="#{messages.CreateSalesterritoryhistoryLabel_salesterritoryhistoryPK_startDate}"/>
+            <h:outputText value="#{salesterritoryhistoryController.selected.salesterritoryhistoryPK.startDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateSalesterritoryhistoryLabel_endDate}"/>
+            <h:outputText value="#{salesterritoryhistoryController.selected.endDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateSalesterritoryhistoryLabel_rowguid}"/>
+            <h:outputText value="#{salesterritoryhistoryController.selected.rowguid}"/>
+
+            <h:outputText value="#{messages.CreateSalesterritoryhistoryLabel_modifiedDate}"/>
+            <h:outputText value="#{salesterritoryhistoryController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateSalesterritoryhistoryLabel_salesterritory}"/>
+            <h:outputText value="#{salesterritoryhistoryController.selected.salesterritory.name}"/>
+
+            <h:outputText value="#{messages.CreateSalesterritoryhistoryLabel_salesperson}"/>
+            <h:outputText value="#{salesterritoryhistoryController.selected.salesperson.businessEntityID}"/>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

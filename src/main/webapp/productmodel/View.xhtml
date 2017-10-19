@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="ProductmodelViewForm"
+                       renderedListener="#{productmodelController.selected != null}"
+                       widgetVar="ProductmodelViewDialog">
+
+
+            <h:outputText value="#{messages.CreateProductmodelLabel_productModelID}"/>
+            <h:outputText value="#{productmodelController.selected.productModelID}"/>
+
+            <h:outputText value="#{messages.CreateProductmodelLabel_name}"/>
+            <h:outputText value="#{productmodelController.selected.name}"/>
+
+            <h:outputText value="#{messages.CreateProductmodelLabel_catalogDescription}"/>
+            <h:outputText value="#{productmodelController.selected.catalogDescription}"/>
+
+            <h:outputText value="#{messages.CreateProductmodelLabel_instructions}"/>
+            <h:outputText value="#{productmodelController.selected.instructions}"/>
+
+            <h:outputText value="#{messages.CreateProductmodelLabel_rowguid}"/>
+            <h:outputText value="#{productmodelController.selected.rowguid}"/>
+
+            <h:outputText value="#{messages.CreateProductmodelLabel_modifiedDate}"/>
+            <h:outputText value="#{productmodelController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

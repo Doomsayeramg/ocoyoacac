@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:editpage id="EmployeepayhistoryEditForm"
+                       renderedListener="#{employeepayhistoryController.selected != null}"
+                       widgetVar="EmployeepayhistoryEditDialog"
+                       actionListener="#{employeepayhistoryController.save}"
+                       listForm="EmployeepayhistoryListForm">
+
+
+            <p:outputLabel value="#{messages.CreateEmployeepayhistoryLabel_employeepayhistoryPK_businessEntityID}" for="employeepayhistoryPK_businessEntityID" />
+            <p:inputText id="employeepayhistoryPK_businessEntityID" value="#{employeepayhistoryController.selected.employeepayhistoryPK.businessEntityID}" title="#{messages.CreateEmployeepayhistoryTitle_employeepayhistoryPK_businessEntityID}" required="true" requiredMessage="#{messages.CreateEmployeepayhistoryRequiredMessage_employeepayhistoryPK_businessEntityID}"/>
+
+            <p:outputLabel value="#{messages.CreateEmployeepayhistoryLabel_employeepayhistoryPK_rateChangeDate}" for="employeepayhistoryPK_rateChangeDate" />
+            <p:calendar id="employeepayhistoryPK_rateChangeDate" locale="tr" pattern="#{messages.dateFormat}" value="#{employeepayhistoryController.selected.employeepayhistoryPK.rateChangeDate}" title="#{messages.CreateEmployeepayhistoryTitle_employeepayhistoryPK_rateChangeDate}" required="true" requiredMessage="#{messages.CreateEmployeepayhistoryRequiredMessage_employeepayhistoryPK_rateChangeDate}" mask="true" navigator="true"/>
+
+            <p:outputLabel value="#{messages.CreateEmployeepayhistoryLabel_rate}" for="rate" />
+            <p:inputText id="rate" value="#{employeepayhistoryController.selected.rate}" title="#{messages.CreateEmployeepayhistoryTitle_rate}" required="true" requiredMessage="#{messages.CreateEmployeepayhistoryRequiredMessage_rate}"/>
+
+            <p:outputLabel value="#{messages.CreateEmployeepayhistoryLabel_payFrequency}" for="payFrequency" />
+            <p:inputText id="payFrequency" value="#{employeepayhistoryController.selected.payFrequency}" title="#{messages.CreateEmployeepayhistoryTitle_payFrequency}" required="true" requiredMessage="#{messages.CreateEmployeepayhistoryRequiredMessage_payFrequency}"/>
+
+            <p:outputLabel value="#{messages.CreateEmployeepayhistoryLabel_modifiedDate}" for="modifiedDate" />
+            <p:calendar id="modifiedDate" locale="tr" pattern="#{messages.dateFormat}" value="#{employeepayhistoryController.selected.modifiedDate}" title="#{messages.CreateEmployeepayhistoryTitle_modifiedDate}" required="true" requiredMessage="#{messages.CreateEmployeepayhistoryRequiredMessage_modifiedDate}" mask="true" navigator="true"/>
+
+            <p:outputLabel value="#{messages.CreateEmployeepayhistoryLabel_employee}" for="employee" />
+            <p:selectOneMenu id="employee" value="#{employeepayhistoryController.selected.employee}" required="true" requiredMessage="#{messages.CreateEmployeepayhistoryRequiredMessage_employee}" converter="employeeConverter" filter="true">
+                <f:selectItem itemLabel="#{messages.SelectOneMessage}"/>
+                <f:selectItems value="#{employeeController.items}"
+                               var="employeeItem"
+                               itemValue="#{employeeItem}"
+                               itemLabel="#{employeeItem.businessEntityID.toString()}"
+                               />
+
+            </p:selectOneMenu>
+
+        </coco:editpage>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="SpecialofferproductViewForm"
+                       renderedListener="#{specialofferproductController.selected != null}"
+                       widgetVar="SpecialofferproductViewDialog">
+
+
+            <h:outputText value="#{messages.CreateSpecialofferproductLabel_specialofferproductPK_specialOfferID}"/>
+            <h:outputText value="#{specialofferproductController.selected.specialofferproductPK.specialOfferID}"/>
+
+            <h:outputText value="#{messages.CreateSpecialofferproductLabel_specialofferproductPK_productID}"/>
+            <h:outputText value="#{specialofferproductController.selected.specialofferproductPK.productID}"/>
+
+            <h:outputText value="#{messages.CreateSpecialofferproductLabel_rowguid}"/>
+            <h:outputText value="#{specialofferproductController.selected.rowguid}"/>
+
+            <h:outputText value="#{messages.CreateSpecialofferproductLabel_modifiedDate}"/>
+            <h:outputText value="#{specialofferproductController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateSpecialofferproductLabel_specialoffer}"/>
+            <h:outputText value="#{specialofferproductController.selected.specialoffer.description}"/>
+
+            <h:outputText value="#{messages.CreateSpecialofferproductLabel_product}"/>
+            <h:outputText value="#{specialofferproductController.selected.product.name}"/>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

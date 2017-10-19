@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="SpecialofferViewForm"
+                       renderedListener="#{specialofferController.selected != null}"
+                       widgetVar="SpecialofferViewDialog">
+
+
+            <h:outputText value="#{messages.CreateSpecialofferLabel_specialOfferID}"/>
+            <h:outputText value="#{specialofferController.selected.specialOfferID}"/>
+
+            <h:outputText value="#{messages.CreateSpecialofferLabel_description}"/>
+            <h:outputText value="#{specialofferController.selected.description}"/>
+
+            <h:outputText value="#{messages.CreateSpecialofferLabel_discountPct}"/>
+            <h:outputText value="#{specialofferController.selected.discountPct}"/>
+
+            <h:outputText value="#{messages.CreateSpecialofferLabel_type}"/>
+            <h:outputText value="#{specialofferController.selected.type}"/>
+
+            <h:outputText value="#{messages.CreateSpecialofferLabel_category}"/>
+            <h:outputText value="#{specialofferController.selected.category}"/>
+
+            <h:outputText value="#{messages.CreateSpecialofferLabel_startDate}"/>
+            <h:outputText value="#{specialofferController.selected.startDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateSpecialofferLabel_endDate}"/>
+            <h:outputText value="#{specialofferController.selected.endDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateSpecialofferLabel_minQty}"/>
+            <h:outputText value="#{specialofferController.selected.minQty}"/>
+
+            <h:outputText value="#{messages.CreateSpecialofferLabel_maxQty}"/>
+            <h:outputText value="#{specialofferController.selected.maxQty}"/>
+
+            <h:outputText value="#{messages.CreateSpecialofferLabel_rowguid}"/>
+            <h:outputText value="#{specialofferController.selected.rowguid}"/>
+
+            <h:outputText value="#{messages.CreateSpecialofferLabel_modifiedDate}"/>
+            <h:outputText value="#{specialofferController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

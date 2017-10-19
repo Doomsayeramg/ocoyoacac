@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="SalespersonquotahistoryViewForm"
+                       renderedListener="#{salespersonquotahistoryController.selected != null}"
+                       widgetVar="SalespersonquotahistoryViewDialog">
+
+
+            <h:outputText value="#{messages.CreateSalespersonquotahistoryLabel_salespersonquotahistoryPK_businessEntityID}"/>
+            <h:outputText value="#{salespersonquotahistoryController.selected.salespersonquotahistoryPK.businessEntityID}"/>
+
+            <h:outputText value="#{messages.CreateSalespersonquotahistoryLabel_salespersonquotahistoryPK_quotaDate}"/>
+            <h:outputText value="#{salespersonquotahistoryController.selected.salespersonquotahistoryPK.quotaDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateSalespersonquotahistoryLabel_salesQuota}"/>
+            <h:outputText value="#{salespersonquotahistoryController.selected.salesQuota}"/>
+
+            <h:outputText value="#{messages.CreateSalespersonquotahistoryLabel_rowguid}"/>
+            <h:outputText value="#{salespersonquotahistoryController.selected.rowguid}"/>
+
+            <h:outputText value="#{messages.CreateSalespersonquotahistoryLabel_modifiedDate}"/>
+            <h:outputText value="#{salespersonquotahistoryController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateSalespersonquotahistoryLabel_salesperson}"/>
+            <h:outputText value="#{salespersonquotahistoryController.selected.salesperson.businessEntityID}"/>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

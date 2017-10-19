@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <h:form id="CountryregioncurrencyListForm" class="form-height">
+
+        <p:contextMenu id="CountryregioncurrencyDataTableContextMenu" for="datalist:datalist">  
+            <p:menuitem value="#{messages.New}" onclick="document.getElementById('CountryregioncurrencyListForm:datalist:datalist:createButton').click();" icon="fa fa-plus"/>
+            <p:menuitem value="#{messages.View}" onclick="document.getElementById('CountryregioncurrencyListForm:datalist:datalist:viewButton').click();" icon="fa fa-search"/>
+            <p:menuitem value="#{messages.Edit}" onclick="document.getElementById('CountryregioncurrencyListForm:datalist:datalist:editButton').click();" icon="fa fa-pencil"/>
+            <p:menuitem value="#{messages.Delete}" onclick="document.getElementById('CountryregioncurrencyListForm:datalist:datalist:deleteButton').click();" icon="fa fa-trash"/>
+            <p:separator/>
+            <p:menuitem value="Currency #{messages.View}" icon="fa fa-search"  actionListener="#{countryregioncurrencyController.prepareCurrency}" update=":CurrencyViewForm" oncomplete="PF('CurrencyViewDialog').show()" disabled="#{empty countryregioncurrencyController.selected.currency}"/>  
+            <p:menuitem value="Countryregion #{messages.View}" icon="fa fa-search"  actionListener="#{countryregioncurrencyController.prepareCountryregion}" update=":CountryregionViewForm" oncomplete="PF('CountryregionViewDialog').show()" disabled="#{empty countryregioncurrencyController.selected.countryregion}"/>  
+        </p:contextMenu>
+        <coco:datatable id="datalist"
+                        value="#{countryregioncurrencyController.lazyItems}"
+                        rowKey="#{item.countryregioncurrencyPK.currencyCode}"
+                        selection="#{countryregioncurrencyController.selected}"
+                        filtered="#{countryregioncurrencyController.filtered}"
+                        rowselect=":CountryregioncurrencyListForm:datalist:datalist:createButton,:CountryregioncurrencyListForm:datalist:datalist:viewButton,:CountryregioncurrencyListForm:datalist:datalist:editButton,:CountryregioncurrencyListForm:datalist:datalist:deleteButton,:CountryregioncurrencyListForm:CountryregioncurrencyDataTableContextMenu"
+                        rowDblselect="document.getElementById('CountryregioncurrencyListForm:datalist:datalist:editButton').click()"
+                        contextMenu=":CountryregioncurrencyListForm:datalist:datalist:createButton :CountryregioncurrencyListForm:datalist:datalist:viewButton :CountryregioncurrencyListForm:datalist:datalist:editButton :CountryregioncurrencyListForm:datalist:datalist:deleteButton"
+                        selectListener="#{countryregioncurrencyController.resetParents}">
+
+
+
+
+            <f:facet name="header">
+                #{messages.ListCountryregioncurrencyTitle}
+            </f:facet>
+
+            <p:column sortBy="#{item.countryregioncurrencyPK.countryRegionCode}" filterBy="#{item.countryregioncurrencyPK.countryRegionCode}">
+                <f:facet name="header">
+                    <h:outputText value="#{messages.ListCountryregioncurrencyTitle_countryregioncurrencyPK_countryRegionCode}"/>
+                </f:facet>
+                <h:outputText value="#{item.countryregioncurrencyPK.countryRegionCode}"/>
+            </p:column>
+
+
+            <p:column sortBy="#{item.countryregioncurrencyPK.currencyCode}" filterBy="#{item.countryregioncurrencyPK.currencyCode}">
+                <f:facet name="header">
+                    <h:outputText value="#{messages.ListCountryregioncurrencyTitle_countryregioncurrencyPK_currencyCode}"/>
+                </f:facet>
+                <h:outputText value="#{item.countryregioncurrencyPK.currencyCode}"/>
+            </p:column>
+
+
+            <p:column sortBy="#{item.modifiedDate}" filterBy="#{item.modifiedDate}">
+                <f:facet name="header">
+                    <h:outputText value="#{messages.ListCountryregioncurrencyTitle_modifiedDate}"/>
+                </f:facet>
+                <f:facet name="filter">
+                    <p:calendar pattern="#{messages.dateFormat}" locale="tr" converter="dateConverter"  mask="true" onkeyup="PF('datalistWidget').filter()" size="12" navigator="true">
+                        <p:ajax event="dateSelect" oncomplete="PF('datalistWidget').filter()"/>
+                    </p:calendar>
+                </f:facet>
+                <h:outputText value="#{item.modifiedDate}">
+                    <f:convertDateTime pattern="#{messages.dateFormat}" />
+                </h:outputText>
+            </p:column>
+
+
+            <p:column sortBy="#{item.currency.name}" filterBy="#{item.currency.name}">
+                <f:facet name="header">
+                    <h:outputText value="#{messages.ListCountryregioncurrencyTitle_currency}"/>
+                </f:facet>
+                <h:outputText value="#{item.currency.name}"/>
+            </p:column>
+
+
+            <p:column sortBy="#{item.countryregion.name}" filterBy="#{item.countryregion.name}">
+                <f:facet name="header">
+                    <h:outputText value="#{messages.ListCountryregioncurrencyTitle_countryregion}"/>
+                </f:facet>
+                <h:outputText value="#{item.countryregion.name}"/>
+            </p:column>
+
+            <f:facet name="{buttons}">
+                <div class="footer-left">
+                    <p:commandButton id="createButton" styleClass="btn btn-primary" icon="fa fa-plus"   value="#{messages.New}" actionListener="#{countryregioncurrencyController.prepareCreate}" update=":CountryregioncurrencyCreateForm:CountryregioncurrencyCreateForm" oncomplete="PF('CountryregioncurrencyCreateDialog').show()" onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"/>
+                    <p:commandButton id="viewButton"   styleClass="btn btn-info"  icon="fa fa-search" value="#{messages.View}" update=":CountryregioncurrencyViewForm:CountryregioncurrencyViewForm" oncomplete="PF('CountryregioncurrencyViewDialog').show()" disabled="#{empty countryregioncurrencyController.selected}" onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"/>
+                    <p:commandButton id="editButton" styleClass="btn btn-success" icon="fa fa-pencil" value="#{messages.Edit}" update=":CountryregioncurrencyEditForm:CountryregioncurrencyEditForm" oncomplete="PF('CountryregioncurrencyEditDialog').show()" disabled="#{empty countryregioncurrencyController.selected}" onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"/>
+                    <p:commandButton id="deleteButton" styleClass="btn btn-danger" icon="fa fa-trash"  value="#{messages.Delete}" actionListener="#{countryregioncurrencyController.delete}" update=":growl,datalist" disabled="#{empty countryregioncurrencyController.selected}">
+                        <p:confirm header="#{messages.ConfirmationHeader}" message="#{messages.ConfirmDeleteMessage}" icon="fa fa-warning"/>
+                    </p:commandButton>
+                </div>
+            </f:facet>
+
+        </coco:datatable>
+
+
+
+        <ui:include src="/confirmation.xhtml"/>
+
+    </h:form>
+
+</ui:composition>

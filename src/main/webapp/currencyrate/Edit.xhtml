@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:editpage id="CurrencyrateEditForm"
+                       renderedListener="#{currencyrateController.selected != null}"
+                       widgetVar="CurrencyrateEditDialog"
+                       actionListener="#{currencyrateController.save}"
+                       listForm="CurrencyrateListForm">
+
+
+            <p:outputLabel value="#{messages.CreateCurrencyrateLabel_currencyRateDate}" for="currencyRateDate" />
+            <p:calendar id="currencyRateDate" locale="tr" pattern="#{messages.dateFormat}" value="#{currencyrateController.selected.currencyRateDate}" title="#{messages.CreateCurrencyrateTitle_currencyRateDate}" required="true" requiredMessage="#{messages.CreateCurrencyrateRequiredMessage_currencyRateDate}" mask="true" navigator="true"/>
+
+            <p:outputLabel value="#{messages.CreateCurrencyrateLabel_averageRate}" for="averageRate" />
+            <p:inputText id="averageRate" value="#{currencyrateController.selected.averageRate}" title="#{messages.CreateCurrencyrateTitle_averageRate}" required="true" requiredMessage="#{messages.CreateCurrencyrateRequiredMessage_averageRate}"/>
+
+            <p:outputLabel value="#{messages.CreateCurrencyrateLabel_endOfDayRate}" for="endOfDayRate" />
+            <p:inputText id="endOfDayRate" value="#{currencyrateController.selected.endOfDayRate}" title="#{messages.CreateCurrencyrateTitle_endOfDayRate}" required="true" requiredMessage="#{messages.CreateCurrencyrateRequiredMessage_endOfDayRate}"/>
+
+            <p:outputLabel value="#{messages.CreateCurrencyrateLabel_modifiedDate}" for="modifiedDate" />
+            <p:calendar id="modifiedDate" locale="tr" pattern="#{messages.dateFormat}" value="#{currencyrateController.selected.modifiedDate}" title="#{messages.CreateCurrencyrateTitle_modifiedDate}" required="true" requiredMessage="#{messages.CreateCurrencyrateRequiredMessage_modifiedDate}" mask="true" navigator="true"/>
+
+            <p:outputLabel value="#{messages.CreateCurrencyrateLabel_toCurrencyCode}" for="toCurrencyCode" />
+            <p:selectOneMenu id="toCurrencyCode" value="#{currencyrateController.selected.toCurrencyCode}" required="true" requiredMessage="#{messages.CreateCurrencyrateRequiredMessage_toCurrencyCode}" converter="currencyConverter" filter="true">
+                <f:selectItem itemLabel="#{messages.SelectOneMessage}"/>
+                <f:selectItems value="#{currencyController.items}"
+                               var="toCurrencyCodeItem"
+                               itemValue="#{toCurrencyCodeItem}"
+                               itemLabel="#{toCurrencyCodeItem.name.toString()}"
+                               />
+
+            </p:selectOneMenu>
+
+            <p:outputLabel value="#{messages.CreateCurrencyrateLabel_fromCurrencyCode}" for="fromCurrencyCode" />
+            <p:selectOneMenu id="fromCurrencyCode" value="#{currencyrateController.selected.fromCurrencyCode}" required="true" requiredMessage="#{messages.CreateCurrencyrateRequiredMessage_fromCurrencyCode}" converter="currencyConverter" filter="true">
+                <f:selectItem itemLabel="#{messages.SelectOneMessage}"/>
+                <f:selectItems value="#{currencyController.items}"
+                               var="fromCurrencyCodeItem"
+                               itemValue="#{fromCurrencyCodeItem}"
+                               itemLabel="#{fromCurrencyCodeItem.name.toString()}"
+                               />
+
+            </p:selectOneMenu>
+
+        </coco:editpage>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="ProductmodelillustrationViewForm"
+                       renderedListener="#{productmodelillustrationController.selected != null}"
+                       widgetVar="ProductmodelillustrationViewDialog">
+
+
+            <h:outputText value="#{messages.CreateProductmodelillustrationLabel_productmodelillustrationPK_productModelID}"/>
+            <h:outputText value="#{productmodelillustrationController.selected.productmodelillustrationPK.productModelID}"/>
+
+            <h:outputText value="#{messages.CreateProductmodelillustrationLabel_productmodelillustrationPK_illustrationID}"/>
+            <h:outputText value="#{productmodelillustrationController.selected.productmodelillustrationPK.illustrationID}"/>
+
+            <h:outputText value="#{messages.CreateProductmodelillustrationLabel_modifiedDate}"/>
+            <h:outputText value="#{productmodelillustrationController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateProductmodelillustrationLabel_productmodel}"/>
+            <h:outputText value="#{productmodelillustrationController.selected.productmodel.name}"/>
+
+            <h:outputText value="#{messages.CreateProductmodelillustrationLabel_illustration}"/>
+            <h:outputText value="#{productmodelillustrationController.selected.illustration.illustrationID}"/>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

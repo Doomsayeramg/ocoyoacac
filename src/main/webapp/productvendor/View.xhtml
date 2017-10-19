@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="ProductvendorViewForm"
+                       renderedListener="#{productvendorController.selected != null}"
+                       widgetVar="ProductvendorViewDialog">
+
+
+            <h:outputText value="#{messages.CreateProductvendorLabel_productvendorPK_productID}"/>
+            <h:outputText value="#{productvendorController.selected.productvendorPK.productID}"/>
+
+            <h:outputText value="#{messages.CreateProductvendorLabel_productvendorPK_businessEntityID}"/>
+            <h:outputText value="#{productvendorController.selected.productvendorPK.businessEntityID}"/>
+
+            <h:outputText value="#{messages.CreateProductvendorLabel_averageLeadTime}"/>
+            <h:outputText value="#{productvendorController.selected.averageLeadTime}"/>
+
+            <h:outputText value="#{messages.CreateProductvendorLabel_standardPrice}"/>
+            <h:outputText value="#{productvendorController.selected.standardPrice}"/>
+
+            <h:outputText value="#{messages.CreateProductvendorLabel_lastReceiptCost}"/>
+            <h:outputText value="#{productvendorController.selected.lastReceiptCost}"/>
+
+            <h:outputText value="#{messages.CreateProductvendorLabel_lastReceiptDate}"/>
+            <h:outputText value="#{productvendorController.selected.lastReceiptDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateProductvendorLabel_minOrderQty}"/>
+            <h:outputText value="#{productvendorController.selected.minOrderQty}"/>
+
+            <h:outputText value="#{messages.CreateProductvendorLabel_maxOrderQty}"/>
+            <h:outputText value="#{productvendorController.selected.maxOrderQty}"/>
+
+            <h:outputText value="#{messages.CreateProductvendorLabel_onOrderQty}"/>
+            <h:outputText value="#{productvendorController.selected.onOrderQty}"/>
+
+            <h:outputText value="#{messages.CreateProductvendorLabel_modifiedDate}"/>
+            <h:outputText value="#{productvendorController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateProductvendorLabel_vendor}"/>
+            <h:outputText value="#{productvendorController.selected.vendor.name}"/>
+
+            <h:outputText value="#{messages.CreateProductvendorLabel_unitMeasureCode}"/>
+            <h:outputText value="#{productvendorController.selected.unitMeasureCode.name}"/>
+
+            <h:outputText value="#{messages.CreateProductvendorLabel_product}"/>
+            <h:outputText value="#{productvendorController.selected.product.name}"/>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

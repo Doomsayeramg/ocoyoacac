@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="EmployeepayhistoryViewForm"
+                       renderedListener="#{employeepayhistoryController.selected != null}"
+                       widgetVar="EmployeepayhistoryViewDialog">
+
+
+            <h:outputText value="#{messages.CreateEmployeepayhistoryLabel_employeepayhistoryPK_businessEntityID}"/>
+            <h:outputText value="#{employeepayhistoryController.selected.employeepayhistoryPK.businessEntityID}"/>
+
+            <h:outputText value="#{messages.CreateEmployeepayhistoryLabel_employeepayhistoryPK_rateChangeDate}"/>
+            <h:outputText value="#{employeepayhistoryController.selected.employeepayhistoryPK.rateChangeDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateEmployeepayhistoryLabel_rate}"/>
+            <h:outputText value="#{employeepayhistoryController.selected.rate}"/>
+
+            <h:outputText value="#{messages.CreateEmployeepayhistoryLabel_payFrequency}"/>
+            <h:outputText value="#{employeepayhistoryController.selected.payFrequency}"/>
+
+            <h:outputText value="#{messages.CreateEmployeepayhistoryLabel_modifiedDate}"/>
+            <h:outputText value="#{employeepayhistoryController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateEmployeepayhistoryLabel_employee}"/>
+            <h:outputText value="#{employeepayhistoryController.selected.employee.businessEntityID}"/>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

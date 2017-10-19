@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:editpage id="EmployeeEditForm"
+                       renderedListener="#{employeeController.selected != null}"
+                       widgetVar="EmployeeEditDialog"
+                       actionListener="#{employeeController.save}"
+                       listForm="EmployeeListForm">
+
+
+            <p:outputLabel value="#{messages.CreateEmployeeLabel_businessEntityID}" for="businessEntityID" />
+            <p:inputText id="businessEntityID" value="#{employeeController.selected.businessEntityID}" title="#{messages.CreateEmployeeTitle_businessEntityID}" required="true" requiredMessage="#{messages.CreateEmployeeRequiredMessage_businessEntityID}"/>
+
+            <p:outputLabel value="#{messages.CreateEmployeeLabel_nationalIDNumber}" for="nationalIDNumber" />
+            <p:inputText id="nationalIDNumber" value="#{employeeController.selected.nationalIDNumber}" title="#{messages.CreateEmployeeTitle_nationalIDNumber}" required="true" requiredMessage="#{messages.CreateEmployeeRequiredMessage_nationalIDNumber}" size="15" maxlength="15"/>
+
+            <p:outputLabel value="#{messages.CreateEmployeeLabel_loginID}" for="loginID" />
+            <p:inputTextarea rows="4" id="loginID" value="#{employeeController.selected.loginID}" title="#{messages.CreateEmployeeTitle_loginID}" required="true" requiredMessage="#{messages.CreateEmployeeRequiredMessage_loginID}" styleClass="full-width"/>
+
+            <p:outputLabel value="#{messages.CreateEmployeeLabel_organizationNode}" for="organizationNode" />
+            <p:inputText id="organizationNode" value="#{employeeController.selected.organizationNode}" title="#{messages.CreateEmployeeTitle_organizationNode}" size="255" maxlength="255"/>
+
+            <p:outputLabel value="#{messages.CreateEmployeeLabel_organizationLevel}" for="organizationLevel" />
+            <p:inputText id="organizationLevel" value="#{employeeController.selected.organizationLevel}" title="#{messages.CreateEmployeeTitle_organizationLevel}"/>
+
+            <p:outputLabel value="#{messages.CreateEmployeeLabel_jobTitle}" for="jobTitle" />
+            <p:inputText id="jobTitle" value="#{employeeController.selected.jobTitle}" title="#{messages.CreateEmployeeTitle_jobTitle}" required="true" requiredMessage="#{messages.CreateEmployeeRequiredMessage_jobTitle}" size="50" maxlength="50"/>
+
+            <p:outputLabel value="#{messages.CreateEmployeeLabel_birthDate}" for="birthDate" />
+            <p:calendar id="birthDate" locale="tr" pattern="#{messages.dateFormat}" value="#{employeeController.selected.birthDate}" title="#{messages.CreateEmployeeTitle_birthDate}" required="true" requiredMessage="#{messages.CreateEmployeeRequiredMessage_birthDate}" mask="true" navigator="true"/>
+
+            <p:outputLabel value="#{messages.CreateEmployeeLabel_maritalStatus}" for="maritalStatus" />
+            <p:inputText id="maritalStatus" value="#{employeeController.selected.maritalStatus}" title="#{messages.CreateEmployeeTitle_maritalStatus}" required="true" requiredMessage="#{messages.CreateEmployeeRequiredMessage_maritalStatus}"/>
+
+            <p:outputLabel value="#{messages.CreateEmployeeLabel_gender}" for="gender" />
+            <p:inputText id="gender" value="#{employeeController.selected.gender}" title="#{messages.CreateEmployeeTitle_gender}" required="true" requiredMessage="#{messages.CreateEmployeeRequiredMessage_gender}"/>
+
+            <p:outputLabel value="#{messages.CreateEmployeeLabel_hireDate}" for="hireDate" />
+            <p:calendar id="hireDate" locale="tr" pattern="#{messages.dateFormat}" value="#{employeeController.selected.hireDate}" title="#{messages.CreateEmployeeTitle_hireDate}" required="true" requiredMessage="#{messages.CreateEmployeeRequiredMessage_hireDate}" mask="true" navigator="true"/>
+
+            <p:outputLabel value="#{messages.CreateEmployeeLabel_salariedFlag}" for="salariedFlag" />
+            <p:selectBooleanCheckbox id="salariedFlag" value="#{employeeController.selected.salariedFlag}" required="true" requiredMessage="#{messages.CreateEmployeeRequiredMessage_salariedFlag}"/>
+
+            <p:outputLabel value="#{messages.CreateEmployeeLabel_vacationHours}" for="vacationHours" />
+            <p:inputText id="vacationHours" value="#{employeeController.selected.vacationHours}" title="#{messages.CreateEmployeeTitle_vacationHours}" required="true" requiredMessage="#{messages.CreateEmployeeRequiredMessage_vacationHours}"/>
+
+            <p:outputLabel value="#{messages.CreateEmployeeLabel_sickLeaveHours}" for="sickLeaveHours" />
+            <p:inputText id="sickLeaveHours" value="#{employeeController.selected.sickLeaveHours}" title="#{messages.CreateEmployeeTitle_sickLeaveHours}" required="true" requiredMessage="#{messages.CreateEmployeeRequiredMessage_sickLeaveHours}"/>
+
+            <p:outputLabel value="#{messages.CreateEmployeeLabel_currentFlag}" for="currentFlag" />
+            <p:selectBooleanCheckbox id="currentFlag" value="#{employeeController.selected.currentFlag}" required="true" requiredMessage="#{messages.CreateEmployeeRequiredMessage_currentFlag}"/>
+
+            <p:outputLabel value="#{messages.CreateEmployeeLabel_modifiedDate}" for="modifiedDate" />
+            <p:calendar id="modifiedDate" locale="tr" pattern="#{messages.dateFormat}" value="#{employeeController.selected.modifiedDate}" title="#{messages.CreateEmployeeTitle_modifiedDate}" required="true" requiredMessage="#{messages.CreateEmployeeRequiredMessage_modifiedDate}" mask="true" navigator="true"/>
+
+            <p:outputLabel value="#{messages.CreateEmployeeLabel_salesperson}" for="salesperson" />
+            <p:selectOneMenu id="salesperson" value="#{employeeController.selected.salesperson}"  converter="salespersonConverter" filter="true">
+                <f:selectItem itemLabel="#{messages.SelectOneMessage}"/>
+                <f:selectItems value="#{salespersonController.items}"
+                               var="salespersonItem"
+                               itemValue="#{salespersonItem}"
+                               itemLabel="#{salespersonItem.businessEntityID.toString()}"
+                               />
+
+            </p:selectOneMenu>
+
+            <p:outputLabel value="#{messages.CreateEmployeeLabel_person}" for="person" />
+            <p:selectOneMenu id="person" value="#{employeeController.selected.person}" required="true" requiredMessage="#{messages.CreateEmployeeRequiredMessage_person}" converter="personConverter" filter="true">
+                <f:selectItem itemLabel="#{messages.SelectOneMessage}"/>
+                <f:selectItems value="#{personController.items}"
+                               var="personItem"
+                               itemValue="#{personItem}"
+                               itemLabel="#{personItem.nameStyle.toString()}"
+                               />
+
+            </p:selectOneMenu>
+
+        </coco:editpage>
+
+    </ui:composition>
+
+</html>

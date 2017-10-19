@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="EmployeeViewForm"
+                       renderedListener="#{employeeController.selected != null}"
+                       widgetVar="EmployeeViewDialog">
+
+
+            <h:outputText value="#{messages.CreateEmployeeLabel_businessEntityID}"/>
+            <h:outputText value="#{employeeController.selected.businessEntityID}"/>
+
+            <h:outputText value="#{messages.CreateEmployeeLabel_nationalIDNumber}"/>
+            <h:outputText value="#{employeeController.selected.nationalIDNumber}"/>
+
+            <h:outputText value="#{messages.CreateEmployeeLabel_loginID}"/>
+            <h:outputText value="#{employeeController.selected.loginID}"/>
+
+            <h:outputText value="#{messages.CreateEmployeeLabel_organizationNode}"/>
+            <h:outputText value="#{employeeController.selected.organizationNode}"/>
+
+            <h:outputText value="#{messages.CreateEmployeeLabel_organizationLevel}"/>
+            <h:outputText value="#{employeeController.selected.organizationLevel}"/>
+
+            <h:outputText value="#{messages.CreateEmployeeLabel_jobTitle}"/>
+            <h:outputText value="#{employeeController.selected.jobTitle}"/>
+
+            <h:outputText value="#{messages.CreateEmployeeLabel_birthDate}"/>
+            <h:outputText value="#{employeeController.selected.birthDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateEmployeeLabel_maritalStatus}"/>
+            <h:outputText value="#{employeeController.selected.maritalStatus}"/>
+
+            <h:outputText value="#{messages.CreateEmployeeLabel_gender}"/>
+            <h:outputText value="#{employeeController.selected.gender}"/>
+
+            <h:outputText value="#{messages.CreateEmployeeLabel_hireDate}"/>
+            <h:outputText value="#{employeeController.selected.hireDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateEmployeeLabel_salariedFlag}"/>
+            <h:selectBooleanCheckbox id="salariedFlag" value="#{employeeController.selected.salariedFlag}" required="true" requiredMessage="#{messages.EditEmployeeRequiredMessage_salariedFlag}" disabled="true"/>
+
+            <h:outputText value="#{messages.CreateEmployeeLabel_vacationHours}"/>
+            <h:outputText value="#{employeeController.selected.vacationHours}"/>
+
+            <h:outputText value="#{messages.CreateEmployeeLabel_sickLeaveHours}"/>
+            <h:outputText value="#{employeeController.selected.sickLeaveHours}"/>
+
+            <h:outputText value="#{messages.CreateEmployeeLabel_currentFlag}"/>
+            <h:selectBooleanCheckbox id="currentFlag" value="#{employeeController.selected.currentFlag}" required="true" requiredMessage="#{messages.EditEmployeeRequiredMessage_currentFlag}" disabled="true"/>
+
+            <h:outputText value="#{messages.CreateEmployeeLabel_modifiedDate}"/>
+            <h:outputText value="#{employeeController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateEmployeeLabel_salesperson}"/>
+            <h:outputText value="#{employeeController.selected.salesperson.businessEntityID}"/>
+
+            <h:outputText value="#{messages.CreateEmployeeLabel_person}"/>
+            <h:outputText value="#{employeeController.selected.person.nameStyle}"/>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

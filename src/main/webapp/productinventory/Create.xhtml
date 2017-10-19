@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:createpage id="ProductinventoryCreateForm"
+                         renderedListener="#{productinventoryController.selected != null}"
+                         widgetVar="ProductinventoryCreateDialog"
+                         actionListener="#{productinventoryController.saveNew}"
+                         listForm="ProductinventoryListForm">
+
+
+            <p:outputLabel value="#{messages.CreateProductinventoryLabel_productinventoryPK_productID}" for="productinventoryPK_productID" />
+            <p:inputText id="productinventoryPK_productID" value="#{productinventoryController.selected.productinventoryPK.productID}" title="#{messages.CreateProductinventoryTitle_productinventoryPK_productID}" required="true" requiredMessage="#{messages.CreateProductinventoryRequiredMessage_productinventoryPK_productID}"/>
+
+            <p:outputLabel value="#{messages.CreateProductinventoryLabel_productinventoryPK_locationID}" for="productinventoryPK_locationID" />
+            <p:inputText id="productinventoryPK_locationID" value="#{productinventoryController.selected.productinventoryPK.locationID}" title="#{messages.CreateProductinventoryTitle_productinventoryPK_locationID}" required="true" requiredMessage="#{messages.CreateProductinventoryRequiredMessage_productinventoryPK_locationID}"/>
+
+            <p:outputLabel value="#{messages.CreateProductinventoryLabel_shelf}" for="shelf" />
+            <p:inputText id="shelf" value="#{productinventoryController.selected.shelf}" title="#{messages.CreateProductinventoryTitle_shelf}" required="true" requiredMessage="#{messages.CreateProductinventoryRequiredMessage_shelf}" size="10" maxlength="10"/>
+
+            <p:outputLabel value="#{messages.CreateProductinventoryLabel_bin}" for="bin" />
+            <p:inputText id="bin" value="#{productinventoryController.selected.bin}" title="#{messages.CreateProductinventoryTitle_bin}" required="true" requiredMessage="#{messages.CreateProductinventoryRequiredMessage_bin}"/>
+
+            <p:outputLabel value="#{messages.CreateProductinventoryLabel_quantity}" for="quantity" />
+            <p:inputText id="quantity" value="#{productinventoryController.selected.quantity}" title="#{messages.CreateProductinventoryTitle_quantity}" required="true" requiredMessage="#{messages.CreateProductinventoryRequiredMessage_quantity}"/>
+
+            <p:outputLabel value="#{messages.CreateProductinventoryLabel_rowguid}" for="rowguid" />
+            <p:inputText id="rowguid" value="#{productinventoryController.selected.rowguid}" title="#{messages.CreateProductinventoryTitle_rowguid}" required="true" requiredMessage="#{messages.CreateProductinventoryRequiredMessage_rowguid}" size="64" maxlength="64"/>
+
+            <p:outputLabel value="#{messages.CreateProductinventoryLabel_modifiedDate}" for="modifiedDate" />
+            <p:calendar id="modifiedDate" locale="tr" pattern="#{messages.dateFormat}" value="#{productinventoryController.selected.modifiedDate}" title="#{messages.CreateProductinventoryTitle_modifiedDate}" required="true" requiredMessage="#{messages.CreateProductinventoryRequiredMessage_modifiedDate}" mask="true" navigator="true"/>
+
+            <p:outputLabel value="#{messages.CreateProductinventoryLabel_product}" for="product" />
+            <p:selectOneMenu id="product" value="#{productinventoryController.selected.product}" required="true" requiredMessage="#{messages.CreateProductinventoryRequiredMessage_product}" converter="productConverter" filter="true">
+                <f:selectItem itemLabel="#{messages.SelectOneMessage}"/>
+                <f:selectItems value="#{productController.items}"
+                               var="productItem"
+                               itemValue="#{productItem}"
+                               itemLabel="#{productItem.name.toString()}"
+                               />
+
+            </p:selectOneMenu>
+
+            <p:outputLabel value="#{messages.CreateProductinventoryLabel_location}" for="location" />
+            <p:selectOneMenu id="location" value="#{productinventoryController.selected.location}" required="true" requiredMessage="#{messages.CreateProductinventoryRequiredMessage_location}" converter="locationConverter" filter="true">
+                <f:selectItem itemLabel="#{messages.SelectOneMessage}"/>
+                <f:selectItems value="#{locationController.items}"
+                               var="locationItem"
+                               itemValue="#{locationItem}"
+                               itemLabel="#{locationItem.name.toString()}"
+                               />
+
+            </p:selectOneMenu>
+
+        </coco:createpage>
+
+    </ui:composition>
+
+</html>

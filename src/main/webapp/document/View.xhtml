@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="DocumentViewForm"
+                       renderedListener="#{documentController.selected != null}"
+                       widgetVar="DocumentViewDialog">
+
+
+            <h:outputText value="#{messages.CreateDocumentLabel_documentNode}"/>
+            <h:outputText value="#{documentController.selected.documentNode}"/>
+
+            <h:outputText value="#{messages.CreateDocumentLabel_documentLevel}"/>
+            <h:outputText value="#{documentController.selected.documentLevel}"/>
+
+            <h:outputText value="#{messages.CreateDocumentLabel_title}"/>
+            <h:outputText value="#{documentController.selected.title}"/>
+
+            <h:outputText value="#{messages.CreateDocumentLabel_folderFlag}"/>
+            <h:selectBooleanCheckbox id="folderFlag" value="#{documentController.selected.folderFlag}" required="true" requiredMessage="#{messages.EditDocumentRequiredMessage_folderFlag}" disabled="true"/>
+
+            <h:outputText value="#{messages.CreateDocumentLabel_fileName}"/>
+            <h:outputText value="#{documentController.selected.fileName}"/>
+
+            <h:outputText value="#{messages.CreateDocumentLabel_fileExtension}"/>
+            <h:outputText value="#{documentController.selected.fileExtension}"/>
+
+            <h:outputText value="#{messages.CreateDocumentLabel_revision}"/>
+            <h:outputText value="#{documentController.selected.revision}"/>
+
+            <h:outputText value="#{messages.CreateDocumentLabel_changeNumber}"/>
+            <h:outputText value="#{documentController.selected.changeNumber}"/>
+
+            <h:outputText value="#{messages.CreateDocumentLabel_status}"/>
+            <h:outputText value="#{documentController.selected.status}"/>
+
+            <h:outputText value="#{messages.CreateDocumentLabel_documentSummary}"/>
+            <h:outputText value="#{documentController.selected.documentSummary}"/>
+
+            <h:outputText value="#{messages.CreateDocumentLabel_document}"/>
+            <h:outputText value="#{documentController.selected.document}"/>
+
+            <h:outputText value="#{messages.CreateDocumentLabel_rowguid}"/>
+            <h:outputText value="#{documentController.selected.rowguid}"/>
+
+            <h:outputText value="#{messages.CreateDocumentLabel_modifiedDate}"/>
+            <h:outputText value="#{documentController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateDocumentLabel_owner}"/>
+            <h:outputText value="#{documentController.selected.owner.businessEntityID}"/>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="SalesorderdetailViewForm"
+                       renderedListener="#{salesorderdetailController.selected != null}"
+                       widgetVar="SalesorderdetailViewDialog">
+
+
+            <h:outputText value="#{messages.CreateSalesorderdetailLabel_salesorderdetailPK_salesOrderID}"/>
+            <h:outputText value="#{salesorderdetailController.selected.salesorderdetailPK.salesOrderID}"/>
+
+            <h:outputText value="#{messages.CreateSalesorderdetailLabel_salesorderdetailPK_salesOrderDetailID}"/>
+            <h:outputText value="#{salesorderdetailController.selected.salesorderdetailPK.salesOrderDetailID}"/>
+
+            <h:outputText value="#{messages.CreateSalesorderdetailLabel_carrierTrackingNumber}"/>
+            <h:outputText value="#{salesorderdetailController.selected.carrierTrackingNumber}"/>
+
+            <h:outputText value="#{messages.CreateSalesorderdetailLabel_orderQty}"/>
+            <h:outputText value="#{salesorderdetailController.selected.orderQty}"/>
+
+            <h:outputText value="#{messages.CreateSalesorderdetailLabel_unitPrice}"/>
+            <h:outputText value="#{salesorderdetailController.selected.unitPrice}"/>
+
+            <h:outputText value="#{messages.CreateSalesorderdetailLabel_unitPriceDiscount}"/>
+            <h:outputText value="#{salesorderdetailController.selected.unitPriceDiscount}"/>
+
+            <h:outputText value="#{messages.CreateSalesorderdetailLabel_lineTotal}"/>
+            <h:outputText value="#{salesorderdetailController.selected.lineTotal}"/>
+
+            <h:outputText value="#{messages.CreateSalesorderdetailLabel_rowguid}"/>
+            <h:outputText value="#{salesorderdetailController.selected.rowguid}"/>
+
+            <h:outputText value="#{messages.CreateSalesorderdetailLabel_modifiedDate}"/>
+            <h:outputText value="#{salesorderdetailController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateSalesorderdetailLabel_specialofferproduct}"/>
+            <h:outputText value="#{salesorderdetailController.selected.specialofferproduct.specialofferproductPK}"/>
+
+            <h:outputText value="#{messages.CreateSalesorderdetailLabel_salesorderheader}"/>
+            <h:outputText value="#{salesorderdetailController.selected.salesorderheader.salesOrderID}"/>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="ProductmodelproductdescriptioncultureViewForm"
+                       renderedListener="#{productmodelproductdescriptioncultureController.selected != null}"
+                       widgetVar="ProductmodelproductdescriptioncultureViewDialog">
+
+
+            <h:outputText value="#{messages.CreateProductmodelproductdescriptioncultureLabel_productmodelproductdescriptionculturePK_productModelID}"/>
+            <h:outputText value="#{productmodelproductdescriptioncultureController.selected.productmodelproductdescriptionculturePK.productModelID}"/>
+
+            <h:outputText value="#{messages.CreateProductmodelproductdescriptioncultureLabel_productmodelproductdescriptionculturePK_productDescriptionID}"/>
+            <h:outputText value="#{productmodelproductdescriptioncultureController.selected.productmodelproductdescriptionculturePK.productDescriptionID}"/>
+
+            <h:outputText value="#{messages.CreateProductmodelproductdescriptioncultureLabel_productmodelproductdescriptionculturePK_cultureID}"/>
+            <h:outputText value="#{productmodelproductdescriptioncultureController.selected.productmodelproductdescriptionculturePK.cultureID}"/>
+
+            <h:outputText value="#{messages.CreateProductmodelproductdescriptioncultureLabel_modifiedDate}"/>
+            <h:outputText value="#{productmodelproductdescriptioncultureController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateProductmodelproductdescriptioncultureLabel_productmodel}"/>
+            <h:outputText value="#{productmodelproductdescriptioncultureController.selected.productmodel.name}"/>
+
+            <h:outputText value="#{messages.CreateProductmodelproductdescriptioncultureLabel_productdescription}"/>
+            <h:outputText value="#{productmodelproductdescriptioncultureController.selected.productdescription.productDescriptionID}"/>
+
+            <h:outputText value="#{messages.CreateProductmodelproductdescriptioncultureLabel_culture}"/>
+            <h:outputText value="#{productmodelproductdescriptioncultureController.selected.culture.name}"/>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <h:form id="PurchaseorderdetailListForm" class="form-height">
+
+        <p:contextMenu id="PurchaseorderdetailDataTableContextMenu" for="datalist:datalist">  
+            <p:menuitem value="#{messages.New}" onclick="document.getElementById('PurchaseorderdetailListForm:datalist:datalist:createButton').click();" icon="fa fa-plus"/>
+            <p:menuitem value="#{messages.View}" onclick="document.getElementById('PurchaseorderdetailListForm:datalist:datalist:viewButton').click();" icon="fa fa-search"/>
+            <p:menuitem value="#{messages.Edit}" onclick="document.getElementById('PurchaseorderdetailListForm:datalist:datalist:editButton').click();" icon="fa fa-pencil"/>
+            <p:menuitem value="#{messages.Delete}" onclick="document.getElementById('PurchaseorderdetailListForm:datalist:datalist:deleteButton').click();" icon="fa fa-trash"/>
+            <p:separator/>
+            <p:menuitem value="Purchaseorderheader #{messages.View}" icon="fa fa-search"  actionListener="#{purchaseorderdetailController.preparePurchaseorderheader}" update=":PurchaseorderheaderViewForm" oncomplete="PF('PurchaseorderheaderViewDialog').show()" disabled="#{empty purchaseorderdetailController.selected.purchaseorderheader}"/>  
+            <p:menuitem value="ProductID #{messages.View}" icon="fa fa-search"  actionListener="#{purchaseorderdetailController.prepareProductID}" update=":ProductViewForm" oncomplete="PF('ProductViewDialog').show()" disabled="#{empty purchaseorderdetailController.selected.productID}"/>  
+        </p:contextMenu>
+        <coco:datatable id="datalist"
+                        value="#{purchaseorderdetailController.lazyItems}"
+                        rowKey="#{item.purchaseorderdetailPK}"
+                        selection="#{purchaseorderdetailController.selected}"
+                        filtered="#{purchaseorderdetailController.filtered}"
+                        rowselect=":PurchaseorderdetailListForm:datalist:datalist:createButton,:PurchaseorderdetailListForm:datalist:datalist:viewButton,:PurchaseorderdetailListForm:datalist:datalist:editButton,:PurchaseorderdetailListForm:datalist:datalist:deleteButton,:PurchaseorderdetailListForm:PurchaseorderdetailDataTableContextMenu"
+                        rowDblselect="document.getElementById('PurchaseorderdetailListForm:datalist:datalist:editButton').click()"
+                        contextMenu=":PurchaseorderdetailListForm:datalist:datalist:createButton :PurchaseorderdetailListForm:datalist:datalist:viewButton :PurchaseorderdetailListForm:datalist:datalist:editButton :PurchaseorderdetailListForm:datalist:datalist:deleteButton"
+                        selectListener="#{purchaseorderdetailController.resetParents}">
+
+
+
+
+            <f:facet name="header">
+                #{messages.ListPurchaseorderdetailTitle}
+            </f:facet>
+
+            <p:column sortBy="#{item.purchaseorderdetailPK.purchaseOrderID}" filterBy="#{item.purchaseorderdetailPK.purchaseOrderID}">
+                <f:facet name="header">
+                    <h:outputText value="#{messages.ListPurchaseorderdetailTitle_purchaseorderdetailPK_purchaseOrderID}"/>
+                </f:facet>
+                <h:outputText value="#{item.purchaseorderdetailPK.purchaseOrderID}"/>
+            </p:column>
+
+
+            <p:column sortBy="#{item.purchaseorderdetailPK.purchaseOrderDetailID}" filterBy="#{item.purchaseorderdetailPK.purchaseOrderDetailID}">
+                <f:facet name="header">
+                    <h:outputText value="#{messages.ListPurchaseorderdetailTitle_purchaseorderdetailPK_purchaseOrderDetailID}"/>
+                </f:facet>
+                <h:outputText value="#{item.purchaseorderdetailPK.purchaseOrderDetailID}"/>
+            </p:column>
+
+
+            <p:column sortBy="#{item.dueDate}" filterBy="#{item.dueDate}">
+                <f:facet name="header">
+                    <h:outputText value="#{messages.ListPurchaseorderdetailTitle_dueDate}"/>
+                </f:facet>
+                <f:facet name="filter">
+                    <p:calendar pattern="#{messages.dateFormat}" locale="tr" converter="dateConverter"  mask="true" onkeyup="PF('datalistWidget').filter()" size="12" navigator="true">
+                        <p:ajax event="dateSelect" oncomplete="PF('datalistWidget').filter()"/>
+                    </p:calendar>
+                </f:facet>
+                <h:outputText value="#{item.dueDate}">
+                    <f:convertDateTime pattern="#{messages.dateFormat}" />
+                </h:outputText>
+            </p:column>
+
+
+            <p:column sortBy="#{item.orderQty}" filterBy="#{item.orderQty}">
+                <f:facet name="header">
+                    <h:outputText value="#{messages.ListPurchaseorderdetailTitle_orderQty}"/>
+                </f:facet>
+                <h:outputText value="#{item.orderQty}"/>
+            </p:column>
+
+
+            <p:column sortBy="#{item.unitPrice}" filterBy="#{item.unitPrice}">
+                <f:facet name="header">
+                    <h:outputText value="#{messages.ListPurchaseorderdetailTitle_unitPrice}"/>
+                </f:facet>
+                <h:outputText value="#{item.unitPrice}"/>
+            </p:column>
+
+
+            <p:column sortBy="#{item.lineTotal}" filterBy="#{item.lineTotal}">
+                <f:facet name="header">
+                    <h:outputText value="#{messages.ListPurchaseorderdetailTitle_lineTotal}"/>
+                </f:facet>
+                <h:outputText value="#{item.lineTotal}"/>
+            </p:column>
+
+
+            <p:column sortBy="#{item.receivedQty}" filterBy="#{item.receivedQty}">
+                <f:facet name="header">
+                    <h:outputText value="#{messages.ListPurchaseorderdetailTitle_receivedQty}"/>
+                </f:facet>
+                <h:outputText value="#{item.receivedQty}"/>
+            </p:column>
+
+
+            <p:column sortBy="#{item.rejectedQty}" filterBy="#{item.rejectedQty}">
+                <f:facet name="header">
+                    <h:outputText value="#{messages.ListPurchaseorderdetailTitle_rejectedQty}"/>
+                </f:facet>
+                <h:outputText value="#{item.rejectedQty}"/>
+            </p:column>
+
+
+            <p:column sortBy="#{item.stockedQty}" filterBy="#{item.stockedQty}">
+                <f:facet name="header">
+                    <h:outputText value="#{messages.ListPurchaseorderdetailTitle_stockedQty}"/>
+                </f:facet>
+                <h:outputText value="#{item.stockedQty}"/>
+            </p:column>
+
+
+            <p:column sortBy="#{item.modifiedDate}" filterBy="#{item.modifiedDate}">
+                <f:facet name="header">
+                    <h:outputText value="#{messages.ListPurchaseorderdetailTitle_modifiedDate}"/>
+                </f:facet>
+                <f:facet name="filter">
+                    <p:calendar pattern="#{messages.dateFormat}" locale="tr" converter="dateConverter"  mask="true" onkeyup="PF('datalistWidget').filter()" size="12" navigator="true">
+                        <p:ajax event="dateSelect" oncomplete="PF('datalistWidget').filter()"/>
+                    </p:calendar>
+                </f:facet>
+                <h:outputText value="#{item.modifiedDate}">
+                    <f:convertDateTime pattern="#{messages.dateFormat}" />
+                </h:outputText>
+            </p:column>
+
+            <!--
+                                <p:column sortBy="#{item.purchaseorderheader.purchaseOrderID}" filterBy="#{item.purchaseorderheader.purchaseOrderID}">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{messages.ListPurchaseorderdetailTitle_purchaseorderheader}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.purchaseorderheader.purchaseOrderID}"/>
+                                </p:column>
+            -->
+            <!--
+                                <p:column sortBy="#{item.productID.name}" filterBy="#{item.productID.name}">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{messages.ListPurchaseorderdetailTitle_productID}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.productID.name}"/>
+                                </p:column>
+            -->
+            <f:facet name="{buttons}">
+                <div class="footer-left">
+                    <p:commandButton id="createButton" styleClass="btn btn-primary" icon="fa fa-plus"   value="#{messages.New}" actionListener="#{purchaseorderdetailController.prepareCreate}" update=":PurchaseorderdetailCreateForm:PurchaseorderdetailCreateForm" oncomplete="PF('PurchaseorderdetailCreateDialog').show()" onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"/>
+                    <p:commandButton id="viewButton"   styleClass="btn btn-info"  icon="fa fa-search" value="#{messages.View}" update=":PurchaseorderdetailViewForm:PurchaseorderdetailViewForm" oncomplete="PF('PurchaseorderdetailViewDialog').show()" disabled="#{empty purchaseorderdetailController.selected}" onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"/>
+                    <p:commandButton id="editButton" styleClass="btn btn-success" icon="fa fa-pencil" value="#{messages.Edit}" update=":PurchaseorderdetailEditForm:PurchaseorderdetailEditForm" oncomplete="PF('PurchaseorderdetailEditDialog').show()" disabled="#{empty purchaseorderdetailController.selected}" onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"/>
+                    <p:commandButton id="deleteButton" styleClass="btn btn-danger" icon="fa fa-trash"  value="#{messages.Delete}" actionListener="#{purchaseorderdetailController.delete}" update=":growl,datalist" disabled="#{empty purchaseorderdetailController.selected}">
+                        <p:confirm header="#{messages.ConfirmationHeader}" message="#{messages.ConfirmDeleteMessage}" icon="fa fa-warning"/>
+                    </p:commandButton>
+                </div>
+            </f:facet>
+
+        </coco:datatable>
+
+
+
+        <ui:include src="/confirmation.xhtml"/>
+
+    </h:form>
+
+</ui:composition>

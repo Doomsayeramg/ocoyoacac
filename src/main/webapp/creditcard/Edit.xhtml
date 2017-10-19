@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:editpage id="CreditcardEditForm"
+                       renderedListener="#{creditcardController.selected != null}"
+                       widgetVar="CreditcardEditDialog"
+                       actionListener="#{creditcardController.save}"
+                       listForm="CreditcardListForm">
+
+
+            <p:outputLabel value="#{messages.CreateCreditcardLabel_cardType}" for="cardType" />
+            <p:inputText id="cardType" value="#{creditcardController.selected.cardType}" title="#{messages.CreateCreditcardTitle_cardType}" required="true" requiredMessage="#{messages.CreateCreditcardRequiredMessage_cardType}" size="50" maxlength="50"/>
+
+            <p:outputLabel value="#{messages.CreateCreditcardLabel_cardNumber}" for="cardNumber" />
+            <p:inputText id="cardNumber" value="#{creditcardController.selected.cardNumber}" title="#{messages.CreateCreditcardTitle_cardNumber}" required="true" requiredMessage="#{messages.CreateCreditcardRequiredMessage_cardNumber}" size="25" maxlength="25"/>
+
+            <p:outputLabel value="#{messages.CreateCreditcardLabel_expMonth}" for="expMonth" />
+            <p:inputText id="expMonth" value="#{creditcardController.selected.expMonth}" title="#{messages.CreateCreditcardTitle_expMonth}" required="true" requiredMessage="#{messages.CreateCreditcardRequiredMessage_expMonth}"/>
+
+            <p:outputLabel value="#{messages.CreateCreditcardLabel_expYear}" for="expYear" />
+            <p:inputText id="expYear" value="#{creditcardController.selected.expYear}" title="#{messages.CreateCreditcardTitle_expYear}" required="true" requiredMessage="#{messages.CreateCreditcardRequiredMessage_expYear}"/>
+
+            <p:outputLabel value="#{messages.CreateCreditcardLabel_modifiedDate}" for="modifiedDate" />
+            <p:calendar id="modifiedDate" locale="tr" pattern="#{messages.dateFormat}" value="#{creditcardController.selected.modifiedDate}" title="#{messages.CreateCreditcardTitle_modifiedDate}" required="true" requiredMessage="#{messages.CreateCreditcardRequiredMessage_modifiedDate}" mask="true" navigator="true"/>
+
+        </coco:editpage>
+
+    </ui:composition>
+
+</html>

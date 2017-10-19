@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:createpage id="ShipmethodCreateForm"
+                         renderedListener="#{shipmethodController.selected != null}"
+                         widgetVar="ShipmethodCreateDialog"
+                         actionListener="#{shipmethodController.saveNew}"
+                         listForm="ShipmethodListForm">
+
+
+            <p:outputLabel value="#{messages.CreateShipmethodLabel_name}" for="name" />
+            <p:inputText id="name" value="#{shipmethodController.selected.name}" title="#{messages.CreateShipmethodTitle_name}" required="true" requiredMessage="#{messages.CreateShipmethodRequiredMessage_name}" size="100" maxlength="100"/>
+
+            <p:outputLabel value="#{messages.CreateShipmethodLabel_shipBase}" for="shipBase" />
+            <p:inputText id="shipBase" value="#{shipmethodController.selected.shipBase}" title="#{messages.CreateShipmethodTitle_shipBase}" required="true" requiredMessage="#{messages.CreateShipmethodRequiredMessage_shipBase}"/>
+
+            <p:outputLabel value="#{messages.CreateShipmethodLabel_shipRate}" for="shipRate" />
+            <p:inputText id="shipRate" value="#{shipmethodController.selected.shipRate}" title="#{messages.CreateShipmethodTitle_shipRate}" required="true" requiredMessage="#{messages.CreateShipmethodRequiredMessage_shipRate}"/>
+
+            <p:outputLabel value="#{messages.CreateShipmethodLabel_rowguid}" for="rowguid" />
+            <p:inputText id="rowguid" value="#{shipmethodController.selected.rowguid}" title="#{messages.CreateShipmethodTitle_rowguid}" required="true" requiredMessage="#{messages.CreateShipmethodRequiredMessage_rowguid}" size="64" maxlength="64"/>
+
+            <p:outputLabel value="#{messages.CreateShipmethodLabel_modifiedDate}" for="modifiedDate" />
+            <p:calendar id="modifiedDate" locale="tr" pattern="#{messages.dateFormat}" value="#{shipmethodController.selected.modifiedDate}" title="#{messages.CreateShipmethodTitle_modifiedDate}" required="true" requiredMessage="#{messages.CreateShipmethodRequiredMessage_modifiedDate}" mask="true" navigator="true"/>
+
+        </coco:createpage>
+
+    </ui:composition>
+
+</html>

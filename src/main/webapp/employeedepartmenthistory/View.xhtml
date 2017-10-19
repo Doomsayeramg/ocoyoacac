@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="EmployeedepartmenthistoryViewForm"
+                       renderedListener="#{employeedepartmenthistoryController.selected != null}"
+                       widgetVar="EmployeedepartmenthistoryViewDialog">
+
+
+            <h:outputText value="#{messages.CreateEmployeedepartmenthistoryLabel_employeedepartmenthistoryPK_businessEntityID}"/>
+            <h:outputText value="#{employeedepartmenthistoryController.selected.employeedepartmenthistoryPK.businessEntityID}"/>
+
+            <h:outputText value="#{messages.CreateEmployeedepartmenthistoryLabel_employeedepartmenthistoryPK_departmentID}"/>
+            <h:outputText value="#{employeedepartmenthistoryController.selected.employeedepartmenthistoryPK.departmentID}"/>
+
+            <h:outputText value="#{messages.CreateEmployeedepartmenthistoryLabel_employeedepartmenthistoryPK_shiftID}"/>
+            <h:outputText value="#{employeedepartmenthistoryController.selected.employeedepartmenthistoryPK.shiftID}"/>
+
+            <h:outputText value="#{messages.CreateEmployeedepartmenthistoryLabel_employeedepartmenthistoryPK_startDate}"/>
+            <h:outputText value="#{employeedepartmenthistoryController.selected.employeedepartmenthistoryPK.startDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateEmployeedepartmenthistoryLabel_endDate}"/>
+            <h:outputText value="#{employeedepartmenthistoryController.selected.endDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateEmployeedepartmenthistoryLabel_modifiedDate}"/>
+            <h:outputText value="#{employeedepartmenthistoryController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateEmployeedepartmenthistoryLabel_shift}"/>
+            <h:outputText value="#{employeedepartmenthistoryController.selected.shift.name}"/>
+
+            <h:outputText value="#{messages.CreateEmployeedepartmenthistoryLabel_employee}"/>
+            <h:outputText value="#{employeedepartmenthistoryController.selected.employee.businessEntityID}"/>
+
+            <h:outputText value="#{messages.CreateEmployeedepartmenthistoryLabel_department}"/>
+            <h:outputText value="#{employeedepartmenthistoryController.selected.department.name}"/>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

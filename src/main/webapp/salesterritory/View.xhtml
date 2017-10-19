@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="SalesterritoryViewForm"
+                       renderedListener="#{salesterritoryController.selected != null}"
+                       widgetVar="SalesterritoryViewDialog">
+
+
+            <h:outputText value="#{messages.CreateSalesterritoryLabel_territoryID}"/>
+            <h:outputText value="#{salesterritoryController.selected.territoryID}"/>
+
+            <h:outputText value="#{messages.CreateSalesterritoryLabel_name}"/>
+            <h:outputText value="#{salesterritoryController.selected.name}"/>
+
+            <h:outputText value="#{messages.CreateSalesterritoryLabel_group}"/>
+            <h:outputText value="#{salesterritoryController.selected.group}"/>
+
+            <h:outputText value="#{messages.CreateSalesterritoryLabel_salesYTD}"/>
+            <h:outputText value="#{salesterritoryController.selected.salesYTD}"/>
+
+            <h:outputText value="#{messages.CreateSalesterritoryLabel_salesLastYear}"/>
+            <h:outputText value="#{salesterritoryController.selected.salesLastYear}"/>
+
+            <h:outputText value="#{messages.CreateSalesterritoryLabel_costYTD}"/>
+            <h:outputText value="#{salesterritoryController.selected.costYTD}"/>
+
+            <h:outputText value="#{messages.CreateSalesterritoryLabel_costLastYear}"/>
+            <h:outputText value="#{salesterritoryController.selected.costLastYear}"/>
+
+            <h:outputText value="#{messages.CreateSalesterritoryLabel_rowguid}"/>
+            <h:outputText value="#{salesterritoryController.selected.rowguid}"/>
+
+            <h:outputText value="#{messages.CreateSalesterritoryLabel_modifiedDate}"/>
+            <h:outputText value="#{salesterritoryController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateSalesterritoryLabel_countryRegionCode}"/>
+            <h:outputText value="#{salesterritoryController.selected.countryRegionCode.name}"/>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

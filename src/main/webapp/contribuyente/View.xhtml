@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="ContribuyenteViewForm"
+                       renderedListener="#{contribuyenteController.selected != null}"
+                       widgetVar="ContribuyenteViewDialog">
+
+
+		<h:outputText value="Nombre del Contribuyente"/>
+                                        <h:outputText value="#{contribuyenteController.selected.nombre}"/>
+		
+		<h:outputText value="Apellido Paterno del Contribuyente"/>
+		<h:outputText value="#{contribuyenteController.selected.apellidopat}"/>
+		
+		<h:outputText value="Apellido Materno del Contribuyente" />
+		<h:outputText value="#{contribuyenteController.selected.apellidomat}"/>
+
+		<h:outputText value="RFC del Contribuyente" />
+		<h:outputText value="#{contribuyenteController.selected.rfc}"/>
+
+		<h:outputText value="CURP del Contribuyente"/>
+		<h:outputText value="#{contribuyenteController.selected.curp}"/>
+
+		<h:outputText value="Calle" />
+		<h:outputText value="#{contribuyenteController.selected.calle}" />
+
+		<h:outputText value="Número"/>
+		<h:outputText value="#{contribuyenteController.selected.numero}"/>
+
+		<h:outputText value="Código Postal del Contribuyente" />
+		<h:outputText value="#{contribuyenteController.selected.cp}" />
+
+		<h:outputText value="Email del Contribuyente" />
+		<h:outputText value="#{contribuyenteController.selected.email}" />
+
+		<h:outputText value="Telefono del Contribuyente"/>
+		<h:outputText value="#{contribuyenteController.selected.telefono}"/>
+
+		<h:outputText value="Celular del Contribuyente" />
+		<h:outputText value="#{contribuyenteController.selected.telefonomovil}"/>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="IllustrationViewForm"
+                       renderedListener="#{illustrationController.selected != null}"
+                       widgetVar="IllustrationViewDialog">
+
+
+            <h:outputText value="#{messages.CreateIllustrationLabel_illustrationID}"/>
+            <h:outputText value="#{illustrationController.selected.illustrationID}"/>
+
+            <h:outputText value="#{messages.CreateIllustrationLabel_diagram}"/>
+            <h:outputText value="#{illustrationController.selected.diagram}"/>
+
+            <h:outputText value="#{messages.CreateIllustrationLabel_modifiedDate}"/>
+            <h:outputText value="#{illustrationController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:editpage id="CustomerEditForm"
+                       renderedListener="#{customerController.selected != null}"
+                       widgetVar="CustomerEditDialog"
+                       actionListener="#{customerController.save}"
+                       listForm="CustomerListForm">
+
+
+            <p:outputLabel value="#{messages.CreateCustomerLabel_accountNumber}" for="accountNumber" />
+            <p:inputText id="accountNumber" value="#{customerController.selected.accountNumber}" title="#{messages.CreateCustomerTitle_accountNumber}" required="true" requiredMessage="#{messages.CreateCustomerRequiredMessage_accountNumber}" size="10" maxlength="10"/>
+
+            <p:outputLabel value="#{messages.CreateCustomerLabel_rowguid}" for="rowguid" />
+            <p:inputText id="rowguid" value="#{customerController.selected.rowguid}" title="#{messages.CreateCustomerTitle_rowguid}" required="true" requiredMessage="#{messages.CreateCustomerRequiredMessage_rowguid}" size="64" maxlength="64"/>
+
+            <p:outputLabel value="#{messages.CreateCustomerLabel_modifiedDate}" for="modifiedDate" />
+            <p:calendar id="modifiedDate" locale="tr" pattern="#{messages.dateFormat}" value="#{customerController.selected.modifiedDate}" title="#{messages.CreateCustomerTitle_modifiedDate}" required="true" requiredMessage="#{messages.CreateCustomerRequiredMessage_modifiedDate}" mask="true" navigator="true"/>
+
+            <p:outputLabel value="#{messages.CreateCustomerLabel_storeID}" for="storeID" />
+            <p:selectOneMenu id="storeID" value="#{customerController.selected.storeID}"  converter="storeConverter" filter="true">
+                <f:selectItem itemLabel="#{messages.SelectOneMessage}"/>
+                <f:selectItems value="#{storeController.items}"
+                               var="storeIDItem"
+                               itemValue="#{storeIDItem}"
+                               itemLabel="#{storeIDItem.name.toString()}"
+                               />
+
+            </p:selectOneMenu>
+
+            <p:outputLabel value="#{messages.CreateCustomerLabel_territoryID}" for="territoryID" />
+            <p:selectOneMenu id="territoryID" value="#{customerController.selected.territoryID}"  converter="salesterritoryConverter" filter="true">
+                <f:selectItem itemLabel="#{messages.SelectOneMessage}"/>
+                <f:selectItems value="#{salesterritoryController.items}"
+                               var="territoryIDItem"
+                               itemValue="#{territoryIDItem}"
+                               itemLabel="#{territoryIDItem.name.toString()}"
+                               />
+
+            </p:selectOneMenu>
+
+            <p:outputLabel value="#{messages.CreateCustomerLabel_personID}" for="personID" />
+            <p:selectOneMenu id="personID" value="#{customerController.selected.personID}"  converter="personConverter" filter="true">
+                <f:selectItem itemLabel="#{messages.SelectOneMessage}"/>
+                <f:selectItems value="#{personController.items}"
+                               var="personIDItem"
+                               itemValue="#{personIDItem}"
+                               itemLabel="#{personIDItem.nameStyle.toString()}"
+                               />
+
+            </p:selectOneMenu>
+
+        </coco:editpage>
+
+    </ui:composition>
+
+</html>

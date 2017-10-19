@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:createpage id="ProductdescriptionCreateForm"
+                         renderedListener="#{productdescriptionController.selected != null}"
+                         widgetVar="ProductdescriptionCreateDialog"
+                         actionListener="#{productdescriptionController.saveNew}"
+                         listForm="ProductdescriptionListForm">
+
+
+            <p:outputLabel value="#{messages.CreateProductdescriptionLabel_description}" for="description" />
+            <p:inputTextarea rows="4" id="description" value="#{productdescriptionController.selected.description}" title="#{messages.CreateProductdescriptionTitle_description}" required="true" requiredMessage="#{messages.CreateProductdescriptionRequiredMessage_description}" styleClass="full-width"/>
+
+            <p:outputLabel value="#{messages.CreateProductdescriptionLabel_rowguid}" for="rowguid" />
+            <p:inputText id="rowguid" value="#{productdescriptionController.selected.rowguid}" title="#{messages.CreateProductdescriptionTitle_rowguid}" required="true" requiredMessage="#{messages.CreateProductdescriptionRequiredMessage_rowguid}" size="64" maxlength="64"/>
+
+            <p:outputLabel value="#{messages.CreateProductdescriptionLabel_modifiedDate}" for="modifiedDate" />
+            <p:calendar id="modifiedDate" locale="tr" pattern="#{messages.dateFormat}" value="#{productdescriptionController.selected.modifiedDate}" title="#{messages.CreateProductdescriptionTitle_modifiedDate}" required="true" requiredMessage="#{messages.CreateProductdescriptionRequiredMessage_modifiedDate}" mask="true" navigator="true"/>
+
+        </coco:createpage>
+
+    </ui:composition>
+
+</html>

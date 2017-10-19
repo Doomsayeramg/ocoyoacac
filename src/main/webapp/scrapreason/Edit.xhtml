@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:editpage id="ScrapreasonEditForm"
+                       renderedListener="#{scrapreasonController.selected != null}"
+                       widgetVar="ScrapreasonEditDialog"
+                       actionListener="#{scrapreasonController.save}"
+                       listForm="ScrapreasonListForm">
+
+
+            <p:outputLabel value="#{messages.CreateScrapreasonLabel_name}" for="name" />
+            <p:inputText id="name" value="#{scrapreasonController.selected.name}" title="#{messages.CreateScrapreasonTitle_name}" required="true" requiredMessage="#{messages.CreateScrapreasonRequiredMessage_name}" size="100" maxlength="100"/>
+
+            <p:outputLabel value="#{messages.CreateScrapreasonLabel_modifiedDate}" for="modifiedDate" />
+            <p:calendar id="modifiedDate" locale="tr" pattern="#{messages.dateFormat}" value="#{scrapreasonController.selected.modifiedDate}" title="#{messages.CreateScrapreasonTitle_modifiedDate}" required="true" requiredMessage="#{messages.CreateScrapreasonRequiredMessage_modifiedDate}" mask="true" navigator="true"/>
+
+        </coco:editpage>
+
+    </ui:composition>
+
+</html>

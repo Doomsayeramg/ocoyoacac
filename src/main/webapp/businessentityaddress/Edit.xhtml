@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:editpage id="BusinessentityaddressEditForm"
+                       renderedListener="#{businessentityaddressController.selected != null}"
+                       widgetVar="BusinessentityaddressEditDialog"
+                       actionListener="#{businessentityaddressController.save}"
+                       listForm="BusinessentityaddressListForm">
+
+
+            <p:outputLabel value="#{messages.CreateBusinessentityaddressLabel_businessentityaddressPK_businessEntityID}" for="businessentityaddressPK_businessEntityID" />
+            <p:inputText id="businessentityaddressPK_businessEntityID" value="#{businessentityaddressController.selected.businessEntityAddressID}" title="#{messages.CreateBusinessentityaddressTitle_businessentityaddressPK_businessEntityID}" required="true" requiredMessage="#{messages.CreateBusinessentityaddressRequiredMessage_businessentityaddressPK_businessEntityID}"/>
+
+            <p:outputLabel value="#{messages.CreateBusinessentityaddressLabel_modifiedDate}" for="modifiedDate" />
+            <p:calendar id="modifiedDate" locale="tr" pattern="#{messages.dateFormat}" value="#{businessentityaddressController.selected.modifiedDate}" title="#{messages.CreateBusinessentityaddressTitle_modifiedDate}" required="true" requiredMessage="#{messages.CreateBusinessentityaddressRequiredMessage_modifiedDate}" mask="true" navigator="true"/>
+
+            <p:outputLabel value="#{messages.CreateBusinessentityaddressLabel_businessentity}" for="businessentity" />
+            <p:selectOneMenu id="businessentity" value="#{businessentityaddressController.selected.businessentity}" required="true" requiredMessage="#{messages.CreateBusinessentityaddressRequiredMessage_businessentity}" converter="businessentityConverter" filter="true">
+                <f:selectItem itemLabel="#{messages.SelectOneMessage}"/>
+                <f:selectItems value="#{businessentityController.items}"
+                               var="businessentityItem"
+                               itemValue="#{businessentityItem}"
+                               itemLabel="#{businessentityItem.businessEntityID.toString()}"
+                               />
+
+            </p:selectOneMenu>
+
+            <p:outputLabel value="#{messages.CreateBusinessentityaddressLabel_address}" for="address" />
+            <p:selectOneMenu id="address" value="#{businessentityaddressController.selected.address}" required="true" requiredMessage="#{messages.CreateBusinessentityaddressRequiredMessage_address}" converter="addressConverter" filter="true">
+                <f:selectItem itemLabel="#{messages.SelectOneMessage}"/>
+                <f:selectItems value="#{addressController.items}"
+                               var="addressItem"
+                               itemValue="#{addressItem}"
+                               itemLabel="#{addressItem.addressID.toString()}"
+                               />
+
+            </p:selectOneMenu>
+
+            <p:outputLabel value="#{messages.CreateBusinessentityaddressLabel_addresstype}" for="addresstype" />
+            <p:selectOneMenu id="addresstype" value="#{businessentityaddressController.selected.addresstype}" required="true" requiredMessage="#{messages.CreateBusinessentityaddressRequiredMessage_addresstype}" converter="addresstypeConverter" filter="true">
+                <f:selectItem itemLabel="#{messages.SelectOneMessage}"/>
+                <f:selectItems value="#{addresstypeController.items}"
+                               var="addresstypeItem"
+                               itemValue="#{addresstypeItem}"
+                               itemLabel="#{addresstypeItem.name.toString()}"
+                               />
+
+            </p:selectOneMenu>
+
+        </coco:editpage>
+
+    </ui:composition>
+
+</html>

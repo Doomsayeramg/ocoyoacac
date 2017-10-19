@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:of="http://omnifaces.org/functions">
+
+    <ui:composition>
+
+        <p:dialog id="MenuCreateDlg" widgetVar="MenuCreateDialog" modal="true" resizable="false" 
+                  appendTo="@(body)" header="#{messages.CreateMenuTitle}" closeOnEscape="true">
+
+            <h:form id="MenuCreateForm">
+
+                <h:panelGroup id="display" rendered="#{menuController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{messages.CreateMenuLabel_menuName}" for="menuName" />
+                        <p:inputText id="menuName" value="#{menuController.selected.menuName}" required="true" 
+                                     title="#{messages.CreateMenuTitle_menuName}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{messages.CreateMenuLabel_menuType}" for="menuType" />
+                        <h:selectOneMenu id="menuType" value="#{menuController.selected.menuType}" required="true" 
+                                         styleClass="ui-selectonemenu-label ui-inputfield ui-corner-all" converter="menuTypeConverter">
+                            <f:selectItem itemValue="#{null}" itemLabel="#{messages.SelectOneMessage}"/>
+                            <f:selectItems value="#{menuController.menuTypes}"
+                                           var="menus"
+                                           itemValue="#{menus}"
+                                           itemLabel="#{messages['menuType'+=menus]}"/>
+                            <p:ajax event="change" update="topMenuId"/>
+                        </h:selectOneMenu>
+
+                        <p:outputLabel value="#{messages.CreateMenuLabel_topMenuId}" for="topMenuId" />
+                        <p:selectOneMenu id="topMenuId" value="#{menuController.selected.topMenuId}" filter="true" disabled="#{menuController.selected.menuType.label eq 0}">
+                            <f:selectItem itemValue="#{null}" itemLabel="#{messages.SelectOneMessage}"/>
+                            <f:selectItems value="#{menuController.topMenuList()}"
+                                           var="topMenu"
+                                           itemLabel="#{topMenu.menuName}"
+                                           itemValue="#{topMenu.menuId}"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{messages.CreateMenuLabel_link}" for="link" />
+                        <p:inputText id="link" value="#{menuController.selected.link}" title="#{messages.CreateMenuTitle_link}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{messages.CreateMenuLabel_icon}" for="icon" />
+                        <p:autoComplete id="icon" 
+                                        value="#{menuController.selected.icon}" 
+                                        completeMethod="#{menuController.completeIcon}"
+                                        var="iconItem" 
+                                        itemLabel="#{iconItem}" 
+                                        itemValue="#{iconItem}"
+                                        forceSelection="true"
+                                        inputStyleClass="full-width"
+                                        styleClass="full-width"
+                                        dropdown="true">
+                            <p:column>
+                                <i class="material-icons">#{iconItem}</i>
+                            </p:column>
+                            <p:column>
+                                #{of:capitalize(of:replaceAll(iconItem, '\\_', ' '))}
+                            </p:column>
+
+                        </p:autoComplete>
+
+                        <p:outputLabel value="#{messages.CreateMenuLabel_iconColor}" for="iconColor" />
+                        <p:colorPicker id="iconColor" value="#{menuController.selected.iconColor}"/>
+
+                        <p:outputLabel value="#{messages.CreateMenuLabel_orderNum}" for="orderNum" />
+                        <p:inputText id="orderNum" value="#{menuController.selected.orderNum}" title="#{messages.CreateMenuTitle_orderNum}"/>
+
+                        <f:facet name="footer">
+                            <div class="footer-right">
+                                <p:commandButton class="bg-green" icon="fa fa-check" actionListener="#{menuController.saveNew}" 
+                                                 value="#{messages.Save}" update="display,:MenuListForm:datalist:datalist,:growl" 
+                                                 oncomplete="handleSubmit(xhr,status,args,PF('MenuCreateDialog'));"/>
+                                <p:commandButton class="bg-red"   icon="fa fa-close" value="#{messages.Cancel}" 
+                                                 oncomplete="PF('MenuCreateDialog').hide()" update="display" process="@this" 
+                                                 immediate="true" resetValues="true"/>
+                            </div>
+                        </f:facet>
+
+                    </p:panelGrid>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

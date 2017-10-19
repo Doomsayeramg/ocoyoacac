@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:editpage id="ContribuyenteEditForm"
+                       renderedListener="#{contribuyenteController.selected != null}"
+                       widgetVar="ContribuyenteEditDialog"
+                       actionListener="#{contribuyenteController.save}"
+                       listForm="ContribuyenteListForm">
+
+
+            <p:outputLabel value="Nombre del Contribuyente" for="name" />
+            <p:inputText id="name" value="#{contribuyenteController.selected.nombre}" title="Nombre del Contribuyente" required="true" requiredMessage="El nombre es requerido" size="100" maxlength="100"/>
+
+             <p:outputLabel value="Apellido Paterno del Contribuyente" for="apepat" />
+             <p:inputText id="apepat" value="#{contribuyenteController.selected.apellidopat}" title="Apellido Paterno del Contribuyente" required="true" requiredMessage="El Apellido Paterno es requerido" size="100" maxlength="100"/>
+
+            <p:outputLabel value="Apellido Materno del Contribuyente" for="apepat" />
+            <p:inputText id="apemat" value="#{contribuyenteController.selected.apellidomat}" title="Apellido Materno del Contribuyente" required="true" requiredMessage="El Apellido Materno es requerido" size="100" maxlength="100"/>
+
+             <p:outputLabel value="RFC del Contribuyente" for="rfc" />
+             <p:inputText id="rfc" value="#{contribuyenteController.selected.rfc}" title="RFC del Contribuyente" required="true" requiredMessage="El RFC es requerido" size="100" maxlength="100"/>
+
+              <p:outputLabel value="CURP del Contribuyente" for="curp" />
+             <p:inputText id="curp" value="#{contribuyenteController.selected.curp}" title="CURP del Contribuyente" required="true" requiredMessage="El CURP es requerido" size="100" maxlength="100"/>
+
+             <p:outputLabel value="Calle" for="calle" />
+             <p:inputText id="calle" value="#{contribuyenteController.selected.calle}" title="Calle" required="true" requiredMessage="Calle es requerido" size="100" maxlength="100"/>
+
+             <p:outputLabel value="Número" for="numero" />
+             <p:inputText id="numero" value="#{contribuyenteController.selected.numero}" title="Número" required="true" requiredMessage="Número es requerido" size="100" maxlength="100"/>
+
+              <p:outputLabel value="Código Postal del Contribuyente" for="cp" />
+             <p:inputText id="cp" value="#{contribuyenteController.selected.cp}" title="Código Postal del Contribuyente" required="true" requiredMessage="El Código Postal es requerido" size="100" maxlength="100"/>
+
+             <p:outputLabel value="Email del Contribuyente" for="email" />
+             <p:inputText id="email" value="#{contribuyenteController.selected.email}" title="Email del Contribuyente" size="100" maxlength="100"/>
+
+             <p:outputLabel value="Telefono del Contribuyente" for="telefono" />
+             <p:inputText id="telefono" value="#{contribuyenteController.selected.telefono}" title="RFC del Contribuyente" required="true" requiredMessage="El Telefono es requerido" size="100" maxlength="100"/>
+
+             <p:outputLabel value="Celular del Contribuyente" for="telefonomovil" />
+             <p:inputText id="telefonomovil" value="#{contribuyenteController.selected.telefonomovil}" title="Celular del Contribuyente" required="true" requiredMessage="El Celular es requerido" size="100" maxlength="100"/>
+
+             
+        </coco:editpage>
+
+    </ui:composition>
+
+</html>

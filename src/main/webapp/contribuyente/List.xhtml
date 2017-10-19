@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <h:form id="ContribuyenteListForm" class="form-height">
+
+        <p:contextMenu id="ContribuyenteDataTableContextMenu" for="datalist:datalist">  
+            <p:menuitem value="#{messages.New}" onclick="document.getElementById('ContribuyenteListForm:datalist:datalist:createButton').click();" icon="fa fa-plus"/>
+            <p:menuitem value="#{messages.View}" onclick="document.getElementById('ContribuyenteListForm:datalist:datalist:viewButton').click();" icon="fa fa-search"/>
+            <p:menuitem value="#{messages.Edit}" onclick="document.getElementById('ContribuyenteListForm:datalist:datalist:editButton').click();" icon="fa fa-pencil"/>
+            <p:menuitem value="#{messages.Delete}" onclick="document.getElementById('ContribuyenteListForm:datalist:datalist:deleteButton').click();" icon="fa fa-trash"/>
+
+            
+        </p:contextMenu>
+        <coco:datatable id="datalist"
+                        value="#{contribuyenteController.lazyItems}"
+                        rowKey="#{item.idContribuyente}"
+                        selection="#{contribuyenteController.selected}"
+                        filtered="#{contribuyenteController.filtered}"
+                        rowselect=":ContribuyenteListForm:datalist:datalist:createButton,:ContribuyenteListForm:datalist:datalist:viewButton,:ContribuyenteListForm:datalist:datalist:editButton,:ContribuyenteListForm:datalist:datalist:deleteButton,:ContribuyenteListForm:ContribuyenteDataTableContextMenu"
+                        rowDblselect="document.getElementById('ContribuyenteListForm:datalist:datalist:editButton').click()"
+                        contextMenu=":ContribuyenteListForm:datalist:datalist:createButton :ContribuyenteListForm:datalist:datalist:viewButton :ContribuyenteListForm:datalist:datalist:editButton :ContribuyenteListForm:datalist:datalist:deleteButton"
+                        selectListener="#{contribuyenteController.resetParents}">
+
+
+
+
+            <f:facet name="header">
+               Listado de Contribuyentes
+            </f:facet>
+
+            <p:column sortBy="#{item.nombre}" filterBy="#{item.nombre}">
+                <f:facet name="header">
+                    <h:outputText value="Nombre"/>
+                </f:facet>
+                <h:outputText value="#{item.nombre}"/>
+            </p:column>
+
+
+            <p:column sortBy="#{item.apellidopat}" filterBy="#{item.apellidopat}">
+                <f:facet name="header">
+                    <h:outputText value="Apellido Paterno"/>
+                </f:facet>
+                <h:outputText value="#{item.apellidopat}"/>
+            </p:column>
+
+            <p:column sortBy="#{item.apellidomat}" filterBy="#{item.apellidomat}">
+                <f:facet name="header">
+                    <h:outputText value="Apellido Materno"/>
+                </f:facet>
+                <h:outputText value="#{item.apellidomat}"/>
+            </p:column>
+            
+            <p:column sortBy="#{item.rfc}" filterBy="#{item.rfc}">
+                <f:facet name="header">
+                    <h:outputText value="RFC"/>
+                </f:facet>
+                <h:outputText value="#{item.rfc}"/>
+            </p:column>
+            <p:column sortBy="#{item.curp}" filterBy="#{item.curp}">
+                <f:facet name="header">
+                    <h:outputText value="CURP"/>
+                </f:facet>
+                <h:outputText value="#{item.curp}"/>
+            </p:column>            
+            
+            <p:column sortBy="#{item.calle}" filterBy="#{item.calle}">
+                <f:facet name="header">
+                    <h:outputText value="Calle"/>
+                </f:facet>
+                <h:outputText value="#{item.calle}"/>
+            </p:column>           
+            
+            <p:column sortBy="#{item.cp}" filterBy="#{item.cp}">
+                <f:facet name="header">
+                    <h:outputText value="CP"/>
+                </f:facet>
+                <h:outputText value="#{item.cp}"/>
+            </p:column>       
+
+            <p:column sortBy="#{item.email}" filterBy="#{item.email}">
+                <f:facet name="header">
+                    <h:outputText value="Correo electronico"/>
+                </f:facet>
+                <h:outputText value="#{item.email}"/>
+            </p:column>           
+            
+            <p:column sortBy="#{item.telefono}" filterBy="#{item.telefono}">
+                <f:facet name="header">
+                    <h:outputText value="telefono"/>
+                </f:facet>
+                <h:outputText value="#{item.telefono}"/>
+            </p:column>      
+            
+
+            <p:column sortBy="#{item.telefonomovil}" filterBy="#{item.telefonomovil}">
+                <f:facet name="header">
+                    <h:outputText value="telefono Movil"/>
+                </f:facet>
+                <h:outputText value="#{item.telefonomovil}"/>
+            </p:column>                  
+            
+            <f:facet name="{buttons}">
+                <div class="footer-left">
+                    <p:commandButton id="createButton" styleClass="btn btn-primary" icon="fa fa-plus"   value="#{messages.New}" actionListener="#{contribuyenteController.prepareCreate}" update=":ContribuyenteCreateForm:ContribuyenteCreateForm" oncomplete="PF('ContribuyenteCreateDialog').show()" onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"/>
+                    <p:commandButton id="viewButton"   styleClass="btn btn-info"  icon="fa fa-search" value="#{messages.View}" update=":ContribuyenteViewForm:ContribuyenteViewForm" oncomplete="PF('ContribuyenteViewDialog').show()" disabled="#{empty contribuyenteController.selected}" onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"/>
+                    <p:commandButton id="editButton" styleClass="btn btn-success" icon="fa fa-pencil" value="#{messages.Edit}" update=":ContribuyenteEditForm:ContribuyenteEditForm" oncomplete="PF('ContribuyenteEditDialog').show()" disabled="#{empty contribuyenteController.selected}" onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"/>
+                    <p:commandButton id="deleteButton" styleClass="btn btn-danger" icon="fa fa-trash"  value="#{messages.Delete}" actionListener="#{contribuyenteController.delete}" update=":growl,datalist" disabled="#{empty contribuyenteController.selected}">
+                        <p:confirm header="#{messages.ConfirmationHeader}" message="#{messages.ConfirmDeleteMessage}" icon="fa fa-warning"/>
+                    </p:commandButton>
+                </div>
+            </f:facet>
+
+        </coco:datatable>
+
+
+
+        <ui:include src="/confirmation.xhtml"/>
+
+    </h:form>
+
+</ui:composition>

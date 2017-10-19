@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="ProductdocumentViewForm"
+                       renderedListener="#{productdocumentController.selected != null}"
+                       widgetVar="ProductdocumentViewDialog">
+
+
+            <h:outputText value="#{messages.CreateProductdocumentLabel_productdocumentPK_productID}"/>
+            <h:outputText value="#{productdocumentController.selected.productdocumentPK.productID}"/>
+
+            <h:outputText value="#{messages.CreateProductdocumentLabel_productdocumentPK_documentNode}"/>
+            <h:outputText value="#{productdocumentController.selected.productdocumentPK.documentNode}"/>
+
+            <h:outputText value="#{messages.CreateProductdocumentLabel_modifiedDate}"/>
+            <h:outputText value="#{productdocumentController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateProductdocumentLabel_product}"/>
+            <h:outputText value="#{productdocumentController.selected.product.name}"/>
+
+            <h:outputText value="#{messages.CreateProductdocumentLabel_document}"/>
+            <h:outputText value="#{productdocumentController.selected.document.fileName}"/>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

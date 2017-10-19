@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:editpage id="IllustrationEditForm"
+                       renderedListener="#{illustrationController.selected != null}"
+                       widgetVar="IllustrationEditDialog"
+                       actionListener="#{illustrationController.save}"
+                       listForm="IllustrationListForm">
+
+
+            <p:outputLabel value="#{messages.CreateIllustrationLabel_diagram}" for="diagram" />
+            <p:inputTextarea rows="4" id="diagram" value="#{illustrationController.selected.diagram}" title="#{messages.CreateIllustrationTitle_diagram}"  styleClass="full-width"/>
+
+            <p:outputLabel value="#{messages.CreateIllustrationLabel_modifiedDate}" for="modifiedDate" />
+            <p:calendar id="modifiedDate" locale="tr" pattern="#{messages.dateFormat}" value="#{illustrationController.selected.modifiedDate}" title="#{messages.CreateIllustrationTitle_modifiedDate}" required="true" requiredMessage="#{messages.CreateIllustrationRequiredMessage_modifiedDate}" mask="true" navigator="true"/>
+
+        </coco:editpage>
+
+    </ui:composition>
+
+</html>

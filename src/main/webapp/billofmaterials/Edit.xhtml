@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:editpage id="BillofmaterialsEditForm"
+                       renderedListener="#{billofmaterialsController.selected != null}"
+                       widgetVar="BillofmaterialsEditDialog"
+                       actionListener="#{billofmaterialsController.save}"
+                       listForm="BillofmaterialsListForm">
+
+
+            <p:outputLabel value="#{messages.CreateBillofmaterialsLabel_startDate}" for="startDate" />
+            <p:calendar id="startDate" locale="tr" pattern="#{messages.dateFormat}" value="#{billofmaterialsController.selected.startDate}" title="#{messages.CreateBillofmaterialsTitle_startDate}" required="true" requiredMessage="#{messages.CreateBillofmaterialsRequiredMessage_startDate}" mask="true" navigator="true"/>
+
+            <p:outputLabel value="#{messages.CreateBillofmaterialsLabel_endDate}" for="endDate" />
+            <p:calendar id="endDate" locale="tr" pattern="#{messages.dateFormat}" value="#{billofmaterialsController.selected.endDate}" title="#{messages.CreateBillofmaterialsTitle_endDate}"  mask="true" navigator="true"/>
+
+            <p:outputLabel value="#{messages.CreateBillofmaterialsLabel_BOMLevel}" for="BOMLevel" />
+            <p:inputText id="BOMLevel" value="#{billofmaterialsController.selected.BOMLevel}" title="#{messages.CreateBillofmaterialsTitle_BOMLevel}" required="true" requiredMessage="#{messages.CreateBillofmaterialsRequiredMessage_BOMLevel}"/>
+
+            <p:outputLabel value="#{messages.CreateBillofmaterialsLabel_perAssemblyQty}" for="perAssemblyQty" />
+            <p:inputText id="perAssemblyQty" value="#{billofmaterialsController.selected.perAssemblyQty}" title="#{messages.CreateBillofmaterialsTitle_perAssemblyQty}" required="true" requiredMessage="#{messages.CreateBillofmaterialsRequiredMessage_perAssemblyQty}"/>
+
+            <p:outputLabel value="#{messages.CreateBillofmaterialsLabel_modifiedDate}" for="modifiedDate" />
+            <p:calendar id="modifiedDate" locale="tr" pattern="#{messages.dateFormat}" value="#{billofmaterialsController.selected.modifiedDate}" title="#{messages.CreateBillofmaterialsTitle_modifiedDate}" required="true" requiredMessage="#{messages.CreateBillofmaterialsRequiredMessage_modifiedDate}" mask="true" navigator="true"/>
+
+            <p:outputLabel value="#{messages.CreateBillofmaterialsLabel_unitMeasureCode}" for="unitMeasureCode" />
+            <p:selectOneMenu id="unitMeasureCode" value="#{billofmaterialsController.selected.unitMeasureCode}" required="true" requiredMessage="#{messages.CreateBillofmaterialsRequiredMessage_unitMeasureCode}" converter="unitmeasureConverter" filter="true">
+                <f:selectItem itemLabel="#{messages.SelectOneMessage}"/>
+                <f:selectItems value="#{unitmeasureController.items}"
+                               var="unitMeasureCodeItem"
+                               itemValue="#{unitMeasureCodeItem}"
+                               itemLabel="#{unitMeasureCodeItem.name.toString()}"
+                               />
+
+            </p:selectOneMenu>
+
+            <p:outputLabel value="#{messages.CreateBillofmaterialsLabel_productAssemblyID}" for="productAssemblyID" />
+            <p:selectOneMenu id="productAssemblyID" value="#{billofmaterialsController.selected.productAssemblyID}"  converter="productConverter" filter="true">
+                <f:selectItem itemLabel="#{messages.SelectOneMessage}"/>
+                <f:selectItems value="#{productController.items}"
+                               var="productAssemblyIDItem"
+                               itemValue="#{productAssemblyIDItem}"
+                               itemLabel="#{productAssemblyIDItem.name.toString()}"
+                               />
+
+            </p:selectOneMenu>
+
+            <p:outputLabel value="#{messages.CreateBillofmaterialsLabel_componentID}" for="componentID" />
+            <p:selectOneMenu id="componentID" value="#{billofmaterialsController.selected.componentID}" required="true" requiredMessage="#{messages.CreateBillofmaterialsRequiredMessage_componentID}" converter="productConverter" filter="true">
+                <f:selectItem itemLabel="#{messages.SelectOneMessage}"/>
+                <f:selectItems value="#{productController.items}"
+                               var="componentIDItem"
+                               itemValue="#{componentIDItem}"
+                               itemLabel="#{componentIDItem.name.toString()}"
+                               />
+
+            </p:selectOneMenu>
+
+        </coco:editpage>
+
+    </ui:composition>
+
+</html>

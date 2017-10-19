@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:createpage id="SalesterritoryhistoryCreateForm"
+                         renderedListener="#{salesterritoryhistoryController.selected != null}"
+                         widgetVar="SalesterritoryhistoryCreateDialog"
+                         actionListener="#{salesterritoryhistoryController.saveNew}"
+                         listForm="SalesterritoryhistoryListForm">
+
+
+            <p:outputLabel value="#{messages.CreateSalesterritoryhistoryLabel_salesterritoryhistoryPK_businessEntityID}" for="salesterritoryhistoryPK_businessEntityID" />
+            <p:inputText id="salesterritoryhistoryPK_businessEntityID" value="#{salesterritoryhistoryController.selected.salesterritoryhistoryPK.businessEntityID}" title="#{messages.CreateSalesterritoryhistoryTitle_salesterritoryhistoryPK_businessEntityID}" required="true" requiredMessage="#{messages.CreateSalesterritoryhistoryRequiredMessage_salesterritoryhistoryPK_businessEntityID}"/>
+
+            <p:outputLabel value="#{messages.CreateSalesterritoryhistoryLabel_salesterritoryhistoryPK_territoryID}" for="salesterritoryhistoryPK_territoryID" />
+            <p:inputText id="salesterritoryhistoryPK_territoryID" value="#{salesterritoryhistoryController.selected.salesterritoryhistoryPK.territoryID}" title="#{messages.CreateSalesterritoryhistoryTitle_salesterritoryhistoryPK_territoryID}" required="true" requiredMessage="#{messages.CreateSalesterritoryhistoryRequiredMessage_salesterritoryhistoryPK_territoryID}"/>
+
+            <p:outputLabel value="#{messages.CreateSalesterritoryhistoryLabel_salesterritoryhistoryPK_startDate}" for="salesterritoryhistoryPK_startDate" />
+            <p:calendar id="salesterritoryhistoryPK_startDate" locale="tr" pattern="#{messages.dateFormat}" value="#{salesterritoryhistoryController.selected.salesterritoryhistoryPK.startDate}" title="#{messages.CreateSalesterritoryhistoryTitle_salesterritoryhistoryPK_startDate}" required="true" requiredMessage="#{messages.CreateSalesterritoryhistoryRequiredMessage_salesterritoryhistoryPK_startDate}" mask="true" navigator="true"/>
+
+            <p:outputLabel value="#{messages.CreateSalesterritoryhistoryLabel_endDate}" for="endDate" />
+            <p:calendar id="endDate" locale="tr" pattern="#{messages.dateFormat}" value="#{salesterritoryhistoryController.selected.endDate}" title="#{messages.CreateSalesterritoryhistoryTitle_endDate}"  mask="true" navigator="true"/>
+
+            <p:outputLabel value="#{messages.CreateSalesterritoryhistoryLabel_rowguid}" for="rowguid" />
+            <p:inputText id="rowguid" value="#{salesterritoryhistoryController.selected.rowguid}" title="#{messages.CreateSalesterritoryhistoryTitle_rowguid}" required="true" requiredMessage="#{messages.CreateSalesterritoryhistoryRequiredMessage_rowguid}" size="64" maxlength="64"/>
+
+            <p:outputLabel value="#{messages.CreateSalesterritoryhistoryLabel_modifiedDate}" for="modifiedDate" />
+            <p:calendar id="modifiedDate" locale="tr" pattern="#{messages.dateFormat}" value="#{salesterritoryhistoryController.selected.modifiedDate}" title="#{messages.CreateSalesterritoryhistoryTitle_modifiedDate}" required="true" requiredMessage="#{messages.CreateSalesterritoryhistoryRequiredMessage_modifiedDate}" mask="true" navigator="true"/>
+
+            <p:outputLabel value="#{messages.CreateSalesterritoryhistoryLabel_salesterritory}" for="salesterritory" />
+            <p:selectOneMenu id="salesterritory" value="#{salesterritoryhistoryController.selected.salesterritory}" required="true" requiredMessage="#{messages.CreateSalesterritoryhistoryRequiredMessage_salesterritory}" converter="salesterritoryConverter" filter="true">
+                <f:selectItem itemLabel="#{messages.SelectOneMessage}"/>
+                <f:selectItems value="#{salesterritoryController.items}"
+                               var="salesterritoryItem"
+                               itemValue="#{salesterritoryItem}"
+                               itemLabel="#{salesterritoryItem.name.toString()}"
+                               />
+
+            </p:selectOneMenu>
+
+            <p:outputLabel value="#{messages.CreateSalesterritoryhistoryLabel_salesperson}" for="salesperson" />
+            <p:selectOneMenu id="salesperson" value="#{salesterritoryhistoryController.selected.salesperson}" required="true" requiredMessage="#{messages.CreateSalesterritoryhistoryRequiredMessage_salesperson}" converter="salespersonConverter" filter="true">
+                <f:selectItem itemLabel="#{messages.SelectOneMessage}"/>
+                <f:selectItems value="#{salespersonController.items}"
+                               var="salespersonItem"
+                               itemValue="#{salespersonItem}"
+                               itemLabel="#{salespersonItem.businessEntityID.toString()}"
+                               />
+
+            </p:selectOneMenu>
+
+        </coco:createpage>
+
+    </ui:composition>
+
+</html>

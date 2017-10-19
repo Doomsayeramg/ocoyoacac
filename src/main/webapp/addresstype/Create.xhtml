@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:createpage id="AddresstypeCreateForm"
+                         renderedListener="#{addresstypeController.selected != null}"
+                         widgetVar="AddresstypeCreateDialog"
+                         actionListener="#{addresstypeController.saveNew}"
+                         listForm="AddresstypeListForm">
+
+
+            <p:outputLabel value="#{messages.CreateAddresstypeLabel_name}" for="name" />
+            <p:inputText id="name" value="#{addresstypeController.selected.name}" title="#{messages.CreateAddresstypeTitle_name}" required="true" requiredMessage="#{messages.CreateAddresstypeRequiredMessage_name}" size="100" maxlength="100"/>
+
+        </coco:createpage>
+
+    </ui:composition>
+
+</html>

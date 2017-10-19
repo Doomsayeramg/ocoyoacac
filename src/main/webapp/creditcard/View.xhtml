@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="CreditcardViewForm"
+                       renderedListener="#{creditcardController.selected != null}"
+                       widgetVar="CreditcardViewDialog">
+
+
+            <h:outputText value="#{messages.CreateCreditcardLabel_creditCardID}"/>
+            <h:outputText value="#{creditcardController.selected.creditCardID}"/>
+
+            <h:outputText value="#{messages.CreateCreditcardLabel_cardType}"/>
+            <h:outputText value="#{creditcardController.selected.cardType}"/>
+
+            <h:outputText value="#{messages.CreateCreditcardLabel_cardNumber}"/>
+            <h:outputText value="#{creditcardController.selected.cardNumber}"/>
+
+            <h:outputText value="#{messages.CreateCreditcardLabel_expMonth}"/>
+            <h:outputText value="#{creditcardController.selected.expMonth}"/>
+
+            <h:outputText value="#{messages.CreateCreditcardLabel_expYear}"/>
+            <h:outputText value="#{creditcardController.selected.expYear}"/>
+
+            <h:outputText value="#{messages.CreateCreditcardLabel_modifiedDate}"/>
+            <h:outputText value="#{creditcardController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

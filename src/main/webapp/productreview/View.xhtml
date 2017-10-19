@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="ProductreviewViewForm"
+                       renderedListener="#{productreviewController.selected != null}"
+                       widgetVar="ProductreviewViewDialog">
+
+
+            <h:outputText value="#{messages.CreateProductreviewLabel_productReviewID}"/>
+            <h:outputText value="#{productreviewController.selected.productReviewID}"/>
+
+            <h:outputText value="#{messages.CreateProductreviewLabel_reviewerName}"/>
+            <h:outputText value="#{productreviewController.selected.reviewerName}"/>
+
+            <h:outputText value="#{messages.CreateProductreviewLabel_reviewDate}"/>
+            <h:outputText value="#{productreviewController.selected.reviewDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateProductreviewLabel_emailAddress}"/>
+            <h:outputText value="#{productreviewController.selected.emailAddress}"/>
+
+            <h:outputText value="#{messages.CreateProductreviewLabel_rating}"/>
+            <h:outputText value="#{productreviewController.selected.rating}"/>
+
+            <h:outputText value="#{messages.CreateProductreviewLabel_comments}"/>
+            <h:outputText value="#{productreviewController.selected.comments}"/>
+
+            <h:outputText value="#{messages.CreateProductreviewLabel_modifiedDate}"/>
+            <h:outputText value="#{productreviewController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateProductreviewLabel_productID}"/>
+            <h:outputText value="#{productreviewController.selected.productID.name}"/>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

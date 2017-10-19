@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:editpage id="WorkorderEditForm"
+                       renderedListener="#{workorderController.selected != null}"
+                       widgetVar="WorkorderEditDialog"
+                       actionListener="#{workorderController.save}"
+                       listForm="WorkorderListForm">
+
+
+            <p:outputLabel value="#{messages.CreateWorkorderLabel_orderQty}" for="orderQty" />
+            <p:inputText id="orderQty" value="#{workorderController.selected.orderQty}" title="#{messages.CreateWorkorderTitle_orderQty}" required="true" requiredMessage="#{messages.CreateWorkorderRequiredMessage_orderQty}"/>
+
+            <p:outputLabel value="#{messages.CreateWorkorderLabel_stockedQty}" for="stockedQty" />
+            <p:inputText id="stockedQty" value="#{workorderController.selected.stockedQty}" title="#{messages.CreateWorkorderTitle_stockedQty}" required="true" requiredMessage="#{messages.CreateWorkorderRequiredMessage_stockedQty}"/>
+
+            <p:outputLabel value="#{messages.CreateWorkorderLabel_scrappedQty}" for="scrappedQty" />
+            <p:inputText id="scrappedQty" value="#{workorderController.selected.scrappedQty}" title="#{messages.CreateWorkorderTitle_scrappedQty}" required="true" requiredMessage="#{messages.CreateWorkorderRequiredMessage_scrappedQty}"/>
+
+            <p:outputLabel value="#{messages.CreateWorkorderLabel_startDate}" for="startDate" />
+            <p:calendar id="startDate" locale="tr" pattern="#{messages.dateFormat}" value="#{workorderController.selected.startDate}" title="#{messages.CreateWorkorderTitle_startDate}" required="true" requiredMessage="#{messages.CreateWorkorderRequiredMessage_startDate}" mask="true" navigator="true"/>
+
+            <p:outputLabel value="#{messages.CreateWorkorderLabel_endDate}" for="endDate" />
+            <p:calendar id="endDate" locale="tr" pattern="#{messages.dateFormat}" value="#{workorderController.selected.endDate}" title="#{messages.CreateWorkorderTitle_endDate}"  mask="true" navigator="true"/>
+
+            <p:outputLabel value="#{messages.CreateWorkorderLabel_dueDate}" for="dueDate" />
+            <p:calendar id="dueDate" locale="tr" pattern="#{messages.dateFormat}" value="#{workorderController.selected.dueDate}" title="#{messages.CreateWorkorderTitle_dueDate}" required="true" requiredMessage="#{messages.CreateWorkorderRequiredMessage_dueDate}" mask="true" navigator="true"/>
+
+            <p:outputLabel value="#{messages.CreateWorkorderLabel_modifiedDate}" for="modifiedDate" />
+            <p:calendar id="modifiedDate" locale="tr" pattern="#{messages.dateFormat}" value="#{workorderController.selected.modifiedDate}" title="#{messages.CreateWorkorderTitle_modifiedDate}" required="true" requiredMessage="#{messages.CreateWorkorderRequiredMessage_modifiedDate}" mask="true" navigator="true"/>
+
+            <p:outputLabel value="#{messages.CreateWorkorderLabel_scrapReasonID}" for="scrapReasonID" />
+            <p:selectOneMenu id="scrapReasonID" value="#{workorderController.selected.scrapReasonID}"  converter="scrapreasonConverter" filter="true">
+                <f:selectItem itemLabel="#{messages.SelectOneMessage}"/>
+                <f:selectItems value="#{scrapreasonController.items}"
+                               var="scrapReasonIDItem"
+                               itemValue="#{scrapReasonIDItem}"
+                               itemLabel="#{scrapReasonIDItem.name.toString()}"
+                               />
+
+            </p:selectOneMenu>
+
+            <p:outputLabel value="#{messages.CreateWorkorderLabel_productID}" for="productID" />
+            <p:selectOneMenu id="productID" value="#{workorderController.selected.productID}" required="true" requiredMessage="#{messages.CreateWorkorderRequiredMessage_productID}" converter="productConverter" filter="true">
+                <f:selectItem itemLabel="#{messages.SelectOneMessage}"/>
+                <f:selectItems value="#{productController.items}"
+                               var="productIDItem"
+                               itemValue="#{productIDItem}"
+                               itemLabel="#{productIDItem.name.toString()}"
+                               />
+
+            </p:selectOneMenu>
+
+        </coco:editpage>
+
+    </ui:composition>
+
+</html>

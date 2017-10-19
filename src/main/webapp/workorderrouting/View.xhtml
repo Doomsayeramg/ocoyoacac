@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="WorkorderroutingViewForm"
+                       renderedListener="#{workorderroutingController.selected != null}"
+                       widgetVar="WorkorderroutingViewDialog">
+
+
+            <h:outputText value="#{messages.CreateWorkorderroutingLabel_workorderroutingPK_workOrderID}"/>
+            <h:outputText value="#{workorderroutingController.selected.workorderroutingPK.workOrderID}"/>
+
+            <h:outputText value="#{messages.CreateWorkorderroutingLabel_workorderroutingPK_productID}"/>
+            <h:outputText value="#{workorderroutingController.selected.workorderroutingPK.productID}"/>
+
+            <h:outputText value="#{messages.CreateWorkorderroutingLabel_workorderroutingPK_operationSequence}"/>
+            <h:outputText value="#{workorderroutingController.selected.workorderroutingPK.operationSequence}"/>
+
+            <h:outputText value="#{messages.CreateWorkorderroutingLabel_scheduledStartDate}"/>
+            <h:outputText value="#{workorderroutingController.selected.scheduledStartDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateWorkorderroutingLabel_scheduledEndDate}"/>
+            <h:outputText value="#{workorderroutingController.selected.scheduledEndDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateWorkorderroutingLabel_actualStartDate}"/>
+            <h:outputText value="#{workorderroutingController.selected.actualStartDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateWorkorderroutingLabel_actualEndDate}"/>
+            <h:outputText value="#{workorderroutingController.selected.actualEndDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateWorkorderroutingLabel_actualResourceHrs}"/>
+            <h:outputText value="#{workorderroutingController.selected.actualResourceHrs}"/>
+
+            <h:outputText value="#{messages.CreateWorkorderroutingLabel_plannedCost}"/>
+            <h:outputText value="#{workorderroutingController.selected.plannedCost}"/>
+
+            <h:outputText value="#{messages.CreateWorkorderroutingLabel_actualCost}"/>
+            <h:outputText value="#{workorderroutingController.selected.actualCost}"/>
+
+            <h:outputText value="#{messages.CreateWorkorderroutingLabel_modifiedDate}"/>
+            <h:outputText value="#{workorderroutingController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateWorkorderroutingLabel_workorder}"/>
+            <h:outputText value="#{workorderroutingController.selected.workorder.workOrderID}"/>
+
+            <h:outputText value="#{messages.CreateWorkorderroutingLabel_locationID}"/>
+            <h:outputText value="#{workorderroutingController.selected.locationID.name}"/>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="BillofmaterialsViewForm"
+                       renderedListener="#{billofmaterialsController.selected != null}"
+                       widgetVar="BillofmaterialsViewDialog">
+
+
+            <h:outputText value="#{messages.CreateBillofmaterialsLabel_billOfMaterialsID}"/>
+            <h:outputText value="#{billofmaterialsController.selected.billOfMaterialsID}"/>
+
+            <h:outputText value="#{messages.CreateBillofmaterialsLabel_startDate}"/>
+            <h:outputText value="#{billofmaterialsController.selected.startDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateBillofmaterialsLabel_endDate}"/>
+            <h:outputText value="#{billofmaterialsController.selected.endDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateBillofmaterialsLabel_BOMLevel}"/>
+            <h:outputText value="#{billofmaterialsController.selected.BOMLevel}"/>
+
+            <h:outputText value="#{messages.CreateBillofmaterialsLabel_perAssemblyQty}"/>
+            <h:outputText value="#{billofmaterialsController.selected.perAssemblyQty}"/>
+
+            <h:outputText value="#{messages.CreateBillofmaterialsLabel_modifiedDate}"/>
+            <h:outputText value="#{billofmaterialsController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateBillofmaterialsLabel_unitMeasureCode}"/>
+            <h:outputText value="#{billofmaterialsController.selected.unitMeasureCode.name}"/>
+
+            <h:outputText value="#{messages.CreateBillofmaterialsLabel_productAssemblyID}"/>
+            <h:outputText value="#{billofmaterialsController.selected.productAssemblyID.name}"/>
+
+            <h:outputText value="#{messages.CreateBillofmaterialsLabel_componentID}"/>
+            <h:outputText value="#{billofmaterialsController.selected.componentID.name}"/>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:editpage id="AddressEditForm"
+                       renderedListener="#{addressController.selected != null}"
+                       widgetVar="AddressEditDialog"
+                       actionListener="#{addressController.save}"
+                       listForm="AddressListForm">
+
+
+            <p:outputLabel value="#{messages.CreateAddressLabel_addressLine1}" for="addressLine1" />
+            <p:inputText id="addressLine1" value="#{addressController.selected.addressLine1}" title="#{messages.CreateAddressTitle_addressLine1}" required="true" requiredMessage="#{messages.CreateAddressRequiredMessage_addressLine1}" size="60" maxlength="60"/>
+
+            <p:outputLabel value="#{messages.CreateAddressLabel_addressLine2}" for="addressLine2" />
+            <p:inputText id="addressLine2" value="#{addressController.selected.addressLine2}" title="#{messages.CreateAddressTitle_addressLine2}" size="60" maxlength="60"/>
+
+            <p:outputLabel value="#{messages.CreateAddressLabel_city}" for="city" />
+            <p:inputText id="city" value="#{addressController.selected.city}" title="#{messages.CreateAddressTitle_city}" required="true" requiredMessage="#{messages.CreateAddressRequiredMessage_city}" size="30" maxlength="30"/>
+
+            <p:outputLabel value="#{messages.CreateAddressLabel_postalCode}" for="postalCode" />
+            <p:inputText id="postalCode" value="#{addressController.selected.postalCode}" title="#{messages.CreateAddressTitle_postalCode}" required="true" requiredMessage="#{messages.CreateAddressRequiredMessage_postalCode}" size="15" maxlength="15"/>
+
+            <p:outputLabel value="#{messages.CreateAddressLabel_spatialLocation}" for="spatialLocation" />
+            <p:inputTextarea rows="4" id="spatialLocation" value="#{addressController.selected.spatialLocation}" title="#{messages.CreateAddressTitle_spatialLocation}"  styleClass="full-width"/>
+
+            <p:outputLabel value="#{messages.CreateAddressLabel_modifiedDate}" for="modifiedDate" />
+            <p:calendar id="modifiedDate" locale="tr" pattern="#{messages.dateFormat}" value="#{addressController.selected.modifiedDate}" title="#{messages.CreateAddressTitle_modifiedDate}" required="true" requiredMessage="#{messages.CreateAddressRequiredMessage_modifiedDate}" mask="true" navigator="true"/>
+
+            <p:outputLabel value="#{messages.CreateAddressLabel_stateProvinceID}" for="stateProvinceID" />
+            <p:selectOneMenu id="stateProvinceID" value="#{addressController.selected.stateProvinceID}" required="true" requiredMessage="#{messages.CreateAddressRequiredMessage_stateProvinceID}" converter="stateprovinceConverter" filter="true">
+                <f:selectItem itemLabel="#{messages.SelectOneMessage}"/>
+                <f:selectItems value="#{stateprovinceController.items}"
+                               var="stateProvinceIDItem"
+                               itemValue="#{stateProvinceIDItem}"
+                               itemLabel="#{stateProvinceIDItem.name.toString()}"
+                               />
+
+            </p:selectOneMenu>
+
+        </coco:editpage>
+
+    </ui:composition>
+
+</html>

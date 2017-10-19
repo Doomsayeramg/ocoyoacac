@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:coco="http://xmlns.jcp.org/jsf/composite/ui">
+
+    <ui:composition>
+
+        <coco:viewpage id="WorkorderViewForm"
+                       renderedListener="#{workorderController.selected != null}"
+                       widgetVar="WorkorderViewDialog">
+
+
+            <h:outputText value="#{messages.CreateWorkorderLabel_workOrderID}"/>
+            <h:outputText value="#{workorderController.selected.workOrderID}"/>
+
+            <h:outputText value="#{messages.CreateWorkorderLabel_orderQty}"/>
+            <h:outputText value="#{workorderController.selected.orderQty}"/>
+
+            <h:outputText value="#{messages.CreateWorkorderLabel_stockedQty}"/>
+            <h:outputText value="#{workorderController.selected.stockedQty}"/>
+
+            <h:outputText value="#{messages.CreateWorkorderLabel_scrappedQty}"/>
+            <h:outputText value="#{workorderController.selected.scrappedQty}"/>
+
+            <h:outputText value="#{messages.CreateWorkorderLabel_startDate}"/>
+            <h:outputText value="#{workorderController.selected.startDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateWorkorderLabel_endDate}"/>
+            <h:outputText value="#{workorderController.selected.endDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateWorkorderLabel_dueDate}"/>
+            <h:outputText value="#{workorderController.selected.dueDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateWorkorderLabel_modifiedDate}"/>
+            <h:outputText value="#{workorderController.selected.modifiedDate}">
+                <f:convertDateTime pattern="#{messages.dateFormat}" />
+            </h:outputText>
+
+            <h:outputText value="#{messages.CreateWorkorderLabel_scrapReasonID}"/>
+            <h:outputText value="#{workorderController.selected.scrapReasonID.name}"/>
+
+            <h:outputText value="#{messages.CreateWorkorderLabel_productID}"/>
+            <h:outputText value="#{workorderController.selected.productID.name}"/>
+
+        </coco:viewpage>
+
+    </ui:composition>
+
+</html>
+
